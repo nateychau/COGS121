@@ -19,22 +19,22 @@ Possible APIs: Maps/Google Maps, Yelp Fusion
 Storyboards:
 
 Storyboard #1
-![Storyboard 1](https://raw.githubusercontent.com/nateychau/COGS121/master/Scanbot-Apr-22-2019-10.19-PM-1.jpg)
+![Storyboard 1](https://raw.githubusercontent.com/nateychau/COGS121/master/Storyboards/Scanbot-Apr-22-2019-10.19-PM-1.jpg)
 
 Storyboard #2
-![Storyboard 2](https://raw.githubusercontent.com/nateychau/COGS121/master/Scanbot-Apr-22-2019-10.19-PM-2.jpg)
+![Storyboard 2](https://raw.githubusercontent.com/nateychau/COGS121/master/Storyboards/Scanbot-Apr-22-2019-10.19-PM-2.jpg)
 
 Paper Prototypes:
 
 Prototype #1
-![Prototype 1 (1)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201/57852272_516021165469489_2654254857958981632_n.jpg)
-![Prototype 1 (2)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201/58377267_313075579358716_6551923939478601728_n.jpg)
-![Prototype 1 (3)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201/57540109_447993679104647_2328597655753588736_n.jpg)
-![Prototype 1 (4)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201/57484770_2424004587885925_8815479332056072192_n.jpg)
-![Prototype 1 (5)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201/58586746_2039187336377563_710362211796647936_n.jpg)
-![Prototype 1 (6)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201/58419470_2143519402606133_2470234819498344448_n.jpg)
-![Prototype 1 (7)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201/57650846_668544630235017_103261476336173056_n.jpg)
+![Prototype 1 (1)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201%20Images/57852272_516021165469489_2654254857958981632_n.jpg)
+![Prototype 1 (2)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201%20Images/58377267_313075579358716_6551923939478601728_n.jpg)
+![Prototype 1 (3)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201%20Images/57540109_447993679104647_2328597655753588736_n.jpg)
+![Prototype 1 (4)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201%20Images/57484770_2424004587885925_8815479332056072192_n.jpg)
+![Prototype 1 (5)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201%20Images/57650846_668544630235017_103261476336173056_n.jpg)
+![Prototype 1 (6)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201%20Images/58586746_2039187336377563_710362211796647936_n.jpg)
+![Prototype 1 (7)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%201%20Images/58419470_2143519402606133_2470234819498344448_n.jpg)
 
 Prototype #2
-![Prototype 2 (1)](https://raw.githubusercontent.com/nateychau/COGS121/master/Scanbot-Apr-22-2019-10.53-PM-1.jpg)
-![Prototype 2 (2)](https://raw.githubusercontent.com/nateychau/COGS121/master/Scanbot-Apr-22-2019-10.53-PM-2.jpg)
+![Prototype 2 (1)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%202%20Images/Scanbot-Apr-22-2019-10.53-PM-1.jpg)
+![Prototype 2 (2)](https://raw.githubusercontent.com/nateychau/COGS121/master/Prototype%202%20Images/Scanbot-Apr-22-2019-10.53-PM-2.jpg)
