@@ -1,0 +1,22 @@
+{
+  "name": "cogs121",
+  "version": "1.0.0",
+  "description": "URL: https://nateychau.github.io/COGS121/webapp/index.html",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nateychau/COGS121.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nateychau/COGS121/issues"
+  },
+  "homepage": "https://github.com/nateychau/COGS121#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
