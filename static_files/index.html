@@ -28,6 +28,7 @@
             dataType: 'json',
             success: (data) =>{
               console.log('ajax success!', data);
+              $('#names').html('All users:' + data);
             }
           
 
@@ -77,6 +78,10 @@
         <div class="col">
         </div>
       </div>
+
+      <div id = "names" class="container">
+          hey
+        </div>
         
 
  <!--  <a href="results.html">Search</a> -->
