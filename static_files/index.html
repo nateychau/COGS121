@@ -21,14 +21,14 @@
     
     $(document).ready(() =>{
         $('#homeSearch').click(() =>{
-
+          console.log('helllooooooooooooooooooooo');
           $.ajax({
             url: 'users/',
             type: 'GET',
             dataType: 'json',
             success: (data) =>{
               console.log('ajax success!', data);
-              $('#names').html('All users:' + data);
+              $('#status').html('All users' + data);
             }
           
 
@@ -69,9 +69,9 @@
         <div class="col">
             <h1 class="col align-items-center">Key (Home Page)</h1>
             <div class="search-container, col align-items-center">
-            <form > <!--action="results.html"-->
-              <input type="text" placeholder="Search..">
-              <button id = "homeSearch" >Search</button>
+            <!--<form > action="results.html"-->
+              <!-- <input type="text" placeholder="Search.."> -->
+              <button id = "homeSearch" >display current users</button>
             </form>
       </div>
         </div>
@@ -85,6 +85,6 @@
         
 
  <!--  <a href="results.html">Search</a> -->
-    
+      <div id="status"></div>
 </body>
 </html>
