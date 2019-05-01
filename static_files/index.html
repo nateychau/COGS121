@@ -10,10 +10,17 @@
 
     <title>Key</title>
 
-    <script src= "jquery-3.3.1.min.js"></script>
-    <script type = "text/javascript"></script>
+    <script src= "jquery.js"></script>
+    <script type = "text/javascript">
+    
+    $(document).ready(() =>{
+        console.log('hello world');
+    });
+    
+    </script>
   </head>
 <body>
+  <!-- html for navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Key</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,20 +36,29 @@
               <a class="nav-link" href="login.html">Log in</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" action = "results.html">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </nav>
-    <h1>Key (Home Page)</h1>
-    
-        <div class="search-container">
-              <form action="results.html">
-                <input type="text" placeholder="Search.." name="search">
-                <button type = "submit">Search</button>
-              </form>
+
+    <div class="row align-items-center">
+        <div class="col">
         </div>
+        <div class="col">
+            <h1 class="col align-items-center">Key (Home Page)</h1>
+            <div class="search-container, col align-items-center">
+            <form action="results.html">
+              <input type="text" placeholder="Search.." name="search">
+              <button type = "submit">Search</button>
+            </form>
+      </div>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+        
 
  <!--  <a href="results.html">Search</a> -->
        <!-- Optional JavaScript -->
