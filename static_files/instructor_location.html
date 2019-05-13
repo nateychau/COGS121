@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    
     <title>Instructor Location</title>
 </head>
 <body>
@@ -37,11 +37,80 @@
     <h1>Instructor Location</h1>
     <a href="instructor_start.html">Previous</a>
     <a href="instructor_detail.html">Next</a>
+
+    <form id="AddressForm">
+      <input id="AddressSearchBar" class="form-control" type="text" placeholder="Address..">
+      <button id="addAddress" type="submit">Add Address to Map!</button>
+    </form>
+    <div id="map" style="height: 80%; width: 80%"></div>
+    
+
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Javascript file -->
+    <!-- <script src="./js/instructor_location.js"></script> -->
+    <!-- Please put the API key here when testing -->
+    <!-- <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY&callback=initMap">
+    </script> -->
+
+    <!-- Imported from Google_Maps_API -->
+    <script>
+        var geocoder;
+        var map;
+  
+        var addressData = {
+          sender: null,
+          timestamp: null,
+          address: "9500 Gilman Dr.",
+        };
+  
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: {lat: -34.397, lng: 150.644}
+          });
+          geocoder = new google.maps.Geocoder();
+          var marker = codeAddress(geocoder, map);
+        }
+  
+        function codeAddress(geocoder, map) {
+          geocoder.geocode({'address': addressData.address}, function(results, status) {
+            if (status === 'OK') {
+              var marker = new google.maps.Marker({
+                animation: google.maps.Animation.DROP,
+                map: map,
+                position: results[0].geometry.location
+              });
+              map.setCenter(results[0].geometry.location);
+              map.setZoom(15);
+              return marker;
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+            }
+          });
+        }
+  
+        $('#addAddress').click(() =>{
+          console.log('Adding address to map');
+          addressData.address = document.getElementById("AddressSearchBar").value;
+          console.log(addressData);
+          // Creates a new geocoder object
+          geocoder = new google.maps.Geocoder();
+          // calls codeAddress method (above) to plot a new marker
+          var addedmarker = codeAddress(geocoder, map);
+          addedmarker.setMap(map);
+          $('#map').show();
+        });
+  
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY&callback=initMap">
+      </script>
   
 </body>
 </html>
