@@ -20,7 +20,7 @@
   messagingSenderId: "1020553409574",
   appId: "1:1020553409574:web:41f68203fa4f06d9"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
     </script>
 
        <!-- Optional JavaScript -->
@@ -36,27 +36,41 @@ firebase.initializeApp(config);
     $(document).ready(() =>{
       const database = firebase.database();
 
-      database.ref('users/').remove();
-
-      
-
+      $('#resetButton').click(()=>{
+        console.log('Resetting database');
 
 
-        $('#homeSearch').click(() =>{
-          console.log('helllooooooooooooooooooooo');
-          $.ajax({
-            url: 'users/',
-            type: 'GET',
-            dataType: 'json',
-            success: (data) =>{
-              console.log('ajax success!', data);
-              $('#status').html('All users' + data);
-            }
-          
+        database.ref('users/').remove();
 
-          });
+        database.ref('users/Eric').set({location: 'San Diego', experience: 'none'});
+        database.ref('users/Joseph').set({location: 'Anaheim', experience: '-4 years'});
+        database.ref('users/Mel').set({location: 'Los Angeles', experience: '6 years'});
+      });
 
+      $('#deleteButton').click(()=>{
+        const name = $('#deleteNameBox').val();
+        database.ref('users/'+ name).remove();
+      });
+
+      $('#insertButton').click(()=>{
+        const name = $('#insertNameBox').val()
+
+        database.ref('users/'+name).set({
+          location: $('#insertLocationBox').val(),
+          experience: $('#insertExperienceBox').val()
         });
+      });
+
+      $('#homeSearch').click(()=>{
+        database.ref('users/').once('value', (snapshot)=>{
+          const data = snapshot.val();
+          console.log('you received some data', Object.keys(data));
+          $('#status').html('all users:'+ Object.keys(data));
+        }
+        )
+      });
+
+
     });
     
     </script>
@@ -97,6 +111,7 @@ firebase.initializeApp(config);
             </form>
             </div>
         </div>
+        <button id="resetButton">Reset database</button>
         <div class="col"></div>
       </div>
       <div>
@@ -119,6 +134,15 @@ firebase.initializeApp(config);
           </div>  
       </div>
         
+      
+      Name: <input id="insertNameBox" type="text" size="20"/>
+  Location: <input id="insertLocationBox" type="text" size="20"/>
+  Experience: <input id="insertExperienceBox" type="text" size="20"/>
+  <button id="insertButton">Insert into database</button>
+
+  <hr/>
+  Name: <input id="deleteNameBox" type="text" size="20"/>
+  <button id="deleteButton">Delete from database</button>
 
  <!--  <a href="results.html">Search</a> -->
       <div id="status"></div>
