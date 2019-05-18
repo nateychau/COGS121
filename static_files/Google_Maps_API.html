@@ -52,7 +52,7 @@ firebase.initializeApp(firebaseConfig);
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="instructor_start.html">Instructors</a>
+            <a class="nav-link" href="instructor_start.html">Sign Up</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.html">Log in</a>
@@ -64,11 +64,11 @@ firebase.initializeApp(firebaseConfig);
         </form>
       </div>
     </nav>
-    <a href="index.html">Key</a>
-    <a href="instructor_start.html">Instructors</a>
-    <h1>Instructor Location</h1>
 
-    <br>
+    <h1>Instructor Location</h1>
+    <a href="instructor_start.html">Previous</a>
+  
+  
   
     <div align ="center">
       <h4>Where are you located?</h4>
@@ -80,13 +80,16 @@ firebase.initializeApp(firebaseConfig);
     </div>
     <div id="map"></div>
 
-    <a href="instructor_start.html">Previous</a>
-    <a href="instructor_detail.html">Next</a>
+
     <form id="AddressForm">
+      <form action = "instructor_prof.html">
       <input id="AddressSearchBar" class="form-control" name="Address" type="text" placeholder="Address..">
       <button id="addAddress" type="submit">Add Address to Map!</button>
+      </br>
+      <input type="submit" value = "Create My Profile">
     </form>
-    
+  </br>
+ 
 
     <script>
       var geocoder;

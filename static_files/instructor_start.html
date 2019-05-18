@@ -33,7 +33,7 @@ firebase.initializeApp(firebaseConfig);
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="instructor_start.html">Instructors</a>
+                      <a class="nav-link" href="instructor_start.html">Sign Up</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="login.html">Log in</a>
@@ -45,21 +45,41 @@ firebase.initializeApp(firebaseConfig);
                   </form>
                 </div>
               </nav>
-    <a href="index.html">Key</a>
-    <a href="instructor_start.html">Instructors</a>
+
     <h1>Instructor Start (Sign up)</h1>
 
     <div align = "center">
       <br><br>
       <div class = "startForm">
         <!-- <form onsubmit = "validate()"> -->
-        <form action="Google_Maps_API.html">
+        <form action = "Google_Maps_API.html">
             First name: <input id="firstNameInput" type = "text" name = "FirstName" ><br>
             Last name: <input id="lastNameInput" type = "text" name = "LastName"><br>
             
-            <input id="instructorSubmit" type="submit" value = "Continue">
-        </form>
+            
+ 
+          
+              Years of Experience: <input type="text" name = "Years"><br><br>
+              About me: <input type="text" name ="personal info"> <br><br>
+              Pricing: <input type="text" name ="prices"> <br><br>
+              <div class ="col">
+                Availability:
+                <select class ="form-control" id="day availability">
+                  <option>Monday</option>
+                  <option>Tuesday</option>
+                  <option>Wednesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                  <option>Satday</option>
+                  <option>Sunday</option>
+                </select>
+              </div>
+              Pictures/Portfolios: <br><br><br>
+              <input type="submit" value = "Continue to Add Address">
+            </form>
       </div>
+
+
     </div>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
