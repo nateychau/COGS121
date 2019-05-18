@@ -31,49 +31,8 @@ firebase.initializeApp(firebaseConfig);
     
 
     <script src= "jquery-3.4.0.js"></script>
-    <script type = "text/javascript">
-    
-    $(document).ready(() =>{
-      const database = firebase.database();
+    <script src = "buttons.js" defer></script>
 
-      $('#resetButton').click(()=>{
-        console.log('Resetting database');
-
-
-        database.ref('users/').remove();
-
-        database.ref('users/Eric').set({location: 'San Diego', experience: 'none'});
-        database.ref('users/Joseph').set({location: 'Anaheim', experience: '-4 years'});
-        database.ref('users/Mel').set({location: 'Los Angeles', experience: '6 years'});
-      });
-
-      $('#deleteButton').click(()=>{
-        const name = $('#deleteNameBox').val();
-        database.ref('users/'+ name).remove();
-      });
-
-      $('#insertButton').click(()=>{
-        const name = $('#insertNameBox').val()
-
-        database.ref('users/'+name).set({
-          location: $('#insertLocationBox').val(),
-          experience: $('#insertExperienceBox').val()
-        });
-      });
-
-      $('#homeSearch').click(()=>{
-        database.ref('users/').once('value', (snapshot)=>{
-          const data = snapshot.val();
-          console.log('you received some data', Object.keys(data));
-          $('#status').html('all users:'+ Object.keys(data));
-        }
-        )
-      });
-
-
-    });
-    
-    </script>
   </head>
 <body>
   <!--<h1>HELLO</h1>-->
