@@ -21,6 +21,9 @@ firebase.initializeApp(firebaseConfig);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src= "jquery-3.4.0.js"></script>
+    <script src = "buttons.js" defer></script>
+    
     <title>Instructor Start</title>
 </head>
 <body>
@@ -59,12 +62,12 @@ firebase.initializeApp(firebaseConfig);
             
  
           
-              Years of Experience: <input type="text" name = "Years"><br><br>
-              About me: <input type="text" name ="personal info"> <br><br>
-              Pricing: <input type="text" name ="prices"> <br><br>
+              Years of Experience: <input id = "experienceInput" type="text" name = "Years"><br><br>
+              About me: <input id = "aboutInput" type="text" name ="personal info"> <br><br>
+              Pricing: <input id = "priceInput" type="text" name ="prices"> <br><br>
               <div class ="col">
                 Availability:
-                <select class ="form-control" id="day availability">
+                <select class ="form-control" id="availabilityInput">
                   <option>Monday</option>
                   <option>Tuesday</option>
                   <option>Wednesday</option>
@@ -75,7 +78,7 @@ firebase.initializeApp(firebaseConfig);
                 </select>
               </div>
               Pictures/Portfolios: <br><br><br>
-              <input type="submit" value = "Continue to Add Address">
+              <input id = "instructorSubmit" type="submit" value = "Continue to Add Address">
             </form>
       </div>
 

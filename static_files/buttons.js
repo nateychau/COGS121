@@ -43,9 +43,11 @@ $(document).ready(() =>{
         const name = $('#firstNameInput').val()
   
         database.ref('users/'+name).set({
-        
-          location: $('#insertLocationBox').val(),
-          experience: $('#insertExperienceBox').val()
+            lastname: $('#lastNameInput').val(),
+            experience: $('#experienceInput').val(),
+            about: $('#aboutInput').val(),
+            price: $('#priceInput').val(),
+            availability: $('#availabilityInput').val()
         });
       });
 
