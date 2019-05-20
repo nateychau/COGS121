@@ -81,10 +81,10 @@
     <div id="map"></div>
 
 
-    <form id="AddressForm">
+    <form id="AddressForm" class="form-inline my-2 my-lg-0" onsubmit="return false">
       <form action = "instructor_prof.html">
-      <input id="AddressSearchBar" class="form-control" name="Address" type="text" placeholder="Address..">
-      <button id="addAddress" type="submit">Add Address to Map!</button>
+      <input id="AddressSearchBar" class="form-control" name="Address" type="search" placeholder="Address.." aria-label="Search Address">
+      <button id="addAddress" class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Address to Map!</button>
       </br>
       <input type="submit" value = "Create My Profile">
     </form>
@@ -96,18 +96,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script defer type="text/javascript"
+    <!-- <script defer type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=
     AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY
-    &callback=initialize">
-    </script>
+    ">
+    </script> -->
 
     <script src="./js/instructor_location.js"></script>
     
     <script>
-      function initialize() {
-        initMap();
-      }
+      // Call the function
+      // initialize();
+
+      // function initialize() {
+      //   initMap();
+      // }
+      
       /* Confirms Refresh - Used to debug */
       window.onbeforeunload = function(event)
       {
