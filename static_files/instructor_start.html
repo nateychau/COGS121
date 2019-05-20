@@ -5,15 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/6.0.2/firebase-app.js"></script>
-
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
-
+    <script src ='https://www.gstatic.com/firebasejs/5.0.2/firebase.js'></script>
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyBEWM30zYSTgag6ZnD02X7D4hXHcbhNtKA",
+  authDomain: "cogs121-4f067.firebaseapp.com",
+  databaseURL: "https://cogs121-4f067.firebaseio.com",
+  projectId: "cogs121-4f067",
+  storageBucket: "cogs121-4f067.appspot.com",
+  messagingSenderId: "1020553409574",
+  appId: "1:1020553409574:web:41f68203fa4f06d9"
+};
+firebase.initializeApp(firebaseConfig);
+    </script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src= "jquery-3.4.0.js"></script>
+    <script src = "buttons.js" defer></script>
+    
     <title>Instructor Start</title>
 </head>
 <body>
@@ -26,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="instructor_start.html">Instructors</a>
+                      <a class="nav-link" href="instructor_start.html">Sign Up</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="login.html">Log in</a>
@@ -38,21 +48,41 @@
                   </form>
                 </div>
               </nav>
-    <a href="index.html">Key</a>
-    <a href="instructor_start.html">Instructors</a>
+
     <h1>Instructor Start (Sign up)</h1>
 
     <div align = "center">
       <br><br>
       <div class = "startForm">
         <!-- <form onsubmit = "validate()"> -->
-        <form action="Google_Maps_API.html">
+        <form action = "Google_Maps_API.html">
             First name: <input id="firstNameInput" type = "text" name = "FirstName" ><br>
             Last name: <input id="lastNameInput" type = "text" name = "LastName"><br>
             
-            <input id="instructorSubmit" type="submit" value = "Continue">
-        </form>
+            
+ 
+          
+              Years of Experience: <input id = "experienceInput" type="text" name = "Years"><br><br>
+              About me: <input id = "aboutInput" type="text" name ="personal info"> <br><br>
+              Pricing: <input id = "priceInput" type="text" name ="prices"> <br><br>
+              <div class ="col">
+                Availability:
+                <select class ="form-control" id="availabilityInput">
+                  <option>Monday</option>
+                  <option>Tuesday</option>
+                  <option>Wednesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                  <option>Satday</option>
+                  <option>Sunday</option>
+                </select>
+              </div>
+              Pictures/Portfolios: <br><br><br>
+              <input id = "instructorSubmit" type="submit" value = "Continue to Add Address">
+            </form>
       </div>
+
+
     </div>
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

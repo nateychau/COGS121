@@ -20,7 +20,7 @@
   messagingSenderId: "1020553409574",
   appId: "1:1020553409574:web:41f68203fa4f06d9"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
     </script>
 
        <!-- Optional JavaScript -->
@@ -31,35 +31,8 @@ firebase.initializeApp(config);
     
 
     <script src= "jquery-3.4.0.js"></script>
-    <script type = "text/javascript">
-    
-    $(document).ready(() =>{
-      const database = firebase.database();
+    <script src = "buttons.js" defer></script>
 
-      database.ref('users/').remove();
-
-      
-
-
-
-        $('#homeSearch').click(() =>{
-          console.log('helllooooooooooooooooooooo');
-          $.ajax({
-            url: 'users/',
-            type: 'GET',
-            dataType: 'json',
-            success: (data) =>{
-              console.log('ajax success!', data);
-              $('#status').html('All users' + data);
-            }
-          
-
-          });
-
-        });
-    });
-    
-    </script>
   </head>
 <body>
   <!--<h1>HELLO</h1>-->
@@ -73,7 +46,7 @@ firebase.initializeApp(config);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="instructor_start.html">Instructors</a>
+              <a class="nav-link" href="instructor_start.html">Sign Up</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.html">Log in</a>
@@ -97,6 +70,7 @@ firebase.initializeApp(config);
             </form>
             </div>
         </div>
+        <button id="resetButton">Reset database</button>
         <div class="col"></div>
       </div>
       <div>
@@ -119,6 +93,15 @@ firebase.initializeApp(config);
           </div>  
       </div>
         
+      
+      Name: <input id="insertNameBox" type="text" size="20"/>
+  Location: <input id="insertLocationBox" type="text" size="20"/>
+  Experience: <input id="insertExperienceBox" type="text" size="20"/>
+  <button id="insertButton">Insert into database</button>
+
+  <hr/>
+  Name: <input id="deleteNameBox" type="text" size="20"/>
+  <button id="deleteButton">Delete from database</button>
 
  <!--  <a href="results.html">Search</a> -->
       <div id="status"></div>
