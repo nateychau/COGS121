@@ -1,12 +1,14 @@
 var scriptkey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY";
 
+// Google Maps API global variables
+var geocoder;
+var map;
+var infoWindow;
+var marker;
+
 $.getScript(scriptkey, function() {
 
-    // Creates a new geocoder object
-    var geocoder;
-    var map;
-    var infoWindow;
-    var marker;
+   
     initMap();
 
     var addressData = {
@@ -66,6 +68,31 @@ $.getScript(scriptkey, function() {
         });
     }
 
+    // Custom function to make the computer wait...
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds){
+                break;
+            }
+        }
+    }
+});
+
+var ready = false;
+if (!ready) {
+	loading();
+}
+function loading() {
+	console.log('loading...');
+	$('.preloader').show();
+}
+
+$(document).ready( function() {
+    $('.preloader').hide();
+    ready = true;
+    console.log('loaded!');
+
     $('#addAddress').click(() =>{
         console.log('Adding address to map');
         addressData.address = document.getElementById("AddressSearchBar").value;
@@ -76,13 +103,4 @@ $.getScript(scriptkey, function() {
         // $('#map').show();
     });
 
-    // Custom function to make the computer wait...
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > milliseconds){
-                break;
-            }
-        }
-    }
 });

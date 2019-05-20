@@ -8,9 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- <script src= "jquery-3.4.0.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Roboto Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Firebase -->
     <script src ='https://www.gstatic.com/firebasejs/5.0.2/firebase.js'></script>
     <script>
       const firebaseConfig = {
@@ -24,25 +27,19 @@
       };
       firebase.initializeApp(firebaseConfig);
     </script>
-    
-    
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 60%;
-        width: 60%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
 
   </head>
   <body>
+    <!-- Preloader -->
+    <center>
+      <div class="preloader">
+        <div id="loader-container">
+          <i id="loader"></i>
+        </div>
+        <i id="loading-overlay"></i>
+      </div>
+    </center>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="index.html">Key</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,26 +65,38 @@
     <h1>Instructor Location</h1>
     <a href="instructor_start.html">Previous</a>
   
-  
-  
     <div align ="center">
       <h4>Where are you located?</h4>
-  
-      <form class="form-inline my-2 my-lg-0">
+      
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <form id="AddressForm" class="form-inline my-2 my-lg-0" onsubmit="return false">
+            <form action = "instructor_prof.html">
+            <input id="AddressSearchBar" class="form-control" name="Address" type="search" placeholder="Address.." aria-label="Search Address">
+            <button id="addAddress" class="btn btn-outline-success my-2 my-sm-0" type="submit">Show Address</button>
+            </br>
+            <!-- <input type="submit" value = "Create My Profile"> -->
+          </form>
+        </div>
+        
+      </div>
+      
+
+      <!-- <form class="form-inline my-2 my-lg-0">
           <input class="form-control" type="search" placeholder="Address" aria-label="Search">
           <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
     <div id="map"></div>
+    
+    <div class="container">
+      <div class="col-4-lg col-6-md col-12-sm col-12-xs">
+        <button class="btn btn-outline-primary btn-lg btn-block">Continue to My Profile</button>
+      </div>
+    </div>
+    
+    <hr>
 
-
-    <form id="AddressForm" class="form-inline my-2 my-lg-0" onsubmit="return false">
-      <form action = "instructor_prof.html">
-      <input id="AddressSearchBar" class="form-control" name="Address" type="search" placeholder="Address.." aria-label="Search Address">
-      <button id="addAddress" class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Address to Map!</button>
-      </br>
-      <input type="submit" value = "Create My Profile">
-    </form>
   </br>
  
 
