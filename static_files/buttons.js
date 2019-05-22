@@ -28,8 +28,18 @@ $(document).ready(() =>{
       });
     });
 
-
+    
     $('#homeSearch').click(()=>{
+      database.ref('users/').once('value', (snapshot)=>{
+        const data = snapshot.val();
+        console.log('you received some data', Object.keys(data));
+        $('#status').html('all users:'+ Object.keys(data));
+      }
+      )
+    });
+
+    //result.html scripts
+    $('#ResultDisplay').click(()=>{
       database.ref('users/').once('value', (snapshot)=>{
         const data = snapshot.val();
         console.log('you received some data', Object.keys(data));
