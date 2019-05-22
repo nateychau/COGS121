@@ -24,7 +24,7 @@ instructor_prof.html:
 Updates:
 Index.html: added basic database functionality with firebase, removed redundant links
 
-Results.html: added a placeholder, removed redundant links
+Results.html: added a placeholder, removed redundant links, has a display linked to firebase
 
 Result_prof.html: removed redundant links
 
@@ -37,6 +37,6 @@ Login.html: removed redundant links
 Instructor_prof.html: added some links for quick access, removed redundant links
 
 
-User Action 1: For Milestone 4, we have updated the backend to be functional and connected to the front end in that account information can be added to a firebase database, displayed, and deleted. (Directly through index) The eventual goal is to link this information to the various results and profile pages, however, at the moment, it allows the user to immediately add and see the other users (instructors) tracked in the database as well as delete them from the database.
+User Action 1: For Milestone 4, we have updated the backend to be functional and connected to the front end in that account information can be added to a firebase database, displayed, and deleted. This also allows the user to link this information to the results page andt allows the user to immediately add and see the other users (instructors) tracked in the database as well as delete them from the database.
 
 User Action 2: The second user action implemented in Milestone 4 is a Google Maps API which can display the user’s current address or search up addresses. This will eventually be used in helping instructors post their location or help potential customers find the desired instructor, which is very useful for coordinating piano lessons/tutoring.
