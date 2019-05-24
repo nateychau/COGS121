@@ -48,6 +48,37 @@ $(document).ready(() =>{
       )
     });
 
+
+    $('#nameSearch').click(() => {
+      const searchName = $('#nameVal').val();
+      const key = 'users/' + $('#nameVal').val();
+      console.log(searchName);
+      window.location.href = "results.html"
+      $('#query').html(searchName);
+      // 'once' reads the value once from the database
+      database.ref(key).once('value', (snapshot) => {
+        const data = snapshot.val();
+        console.log('You received some data!', data);
+        if (!data) {
+          // clear the display
+          $('#nameDiv').html('');
+          $('#locationDiv').html('');
+          $('#pricingDiv').html('');
+          return;
+        }
+        if (data.experience && data.lastname && data.location) {
+          $('#nameDiv').html(data + '&nbsp' + data.lastname);
+          $('##locationDiv').html(data.location);
+         // $('#pricingDiv').html(data.experience);
+        } else {
+          // clear the display
+          $('#nameDiv').html('');
+          $('#locationDiv').html('');
+          $('#pricingDiv').html('');
+        }
+      });
+    });
+  
 //instructor_start.html scripts
     $('#instructorSubmit').click(()=>{
         const name = $('#firstNameInput').val()
