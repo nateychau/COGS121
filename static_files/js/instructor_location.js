@@ -68,6 +68,16 @@ $.getScript(scriptkey, function() {
         });
     }
 
+    $('#addAddress').click(() =>{
+        console.log('Adding address to map');
+        addressData.address = document.getElementById("AddressSearchBar").value;
+        console.log(addressData);
+        // calls codeAddress method (above) to plot a new marker
+        codeAddress(geocoder, map);
+        // sleep(10000);
+        // $('#map').show();
+    });
+
     // Custom function to make the computer wait...
     function sleep(milliseconds) {
         var start = new Date().getTime();
@@ -92,15 +102,5 @@ $(document).ready( function() {
     $('.preloader').hide();
     ready = true;
     console.log('loaded!');
-
-    $('#addAddress').click(() =>{
-        console.log('Adding address to map');
-        addressData.address = document.getElementById("AddressSearchBar").value;
-        console.log(addressData);
-        // calls codeAddress method (above) to plot a new marker
-        codeAddress(geocoder, map);
-        // sleep(10000);
-        // $('#map').show();
-    });
 
 });
