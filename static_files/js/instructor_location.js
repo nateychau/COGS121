@@ -103,4 +103,37 @@ $(document).ready( function() {
     ready = true;
     console.log('loaded!');
 
+    $('#insertButton').click(()=>{
+        const name = $('#insertNameBox').val();
+        const location = $('#insertLocationBox').val();
+        const experience = $('#insertExperienceBox').val();
+  
+        if (name == null || name == "") {
+          $('#insertNameBox').addClass("invalidInput");
+        }
+        if (location == null || location == "") {
+          $('#insertLocationBox').addClass("invalidInput");
+        }
+        if (experience == null || experience == "") {
+          $('#insertExperienceBox').addClass("invalidInput");
+        }
+        else {
+          database.ref('users/'+name).set({
+            location: location,
+            experience: experience,
+          }, (error)=> {
+            if(error) {
+              console.log("Error:" +  error);
+              // write failed
+              snackbarActivate("An error occured when adding " + name + " to the database: " + error);
+            }
+            else {
+              // data saved successfully
+              snackbarActivate(name + " added to the database");
+            }
+          });
+          
+        }
+      });
+
 });
