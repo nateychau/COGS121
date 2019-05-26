@@ -79,7 +79,7 @@ $(document).ready(() =>{
 function verify() {
     var original = $("#passwordInput").val();
     var check = $("#passwordVerifyInput").val();
-    if (original != check) {
+    if (original != check || check == null || check == "") {
         $('#passwordVerifyInput').addClass("invalidInput");
         return false;
     }

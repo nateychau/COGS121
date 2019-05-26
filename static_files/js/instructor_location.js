@@ -80,13 +80,19 @@ $.getScript(scriptkey, function() {
         codeAddress(geocoder, map);
         // sleep(10000);
 
-        // Set submit button to be enabled
-        $('#AddressSubmit').removeAttr("disabled");
-        $('#AddressSubmit').attr("enabled","");
+        // Copied from addressSubmit button to check for empty addresses
+        const address = $('#AddressSearchBar').val();
+        if (address == null || address == "") {
+          $('#AddressSearchBar').addClass("invalidInput");
+        }
+        else {
+            // Set submit button to be enabled
+            $('#AddressSubmit').removeAttr("disabled");
+            $('#AddressSubmit').attr("enabled","");
 
-        // Scroll to be able to see the button if unable to
-        document.getElementById('AddressSubmit').scrollIntoView({behavior: "smooth"});
-
+            // Scroll to be able to see the button if unable to
+            document.getElementById('AddressSubmit').scrollIntoView({behavior: "smooth"});
+        }
     });
 
 });
