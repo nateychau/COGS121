@@ -5,10 +5,11 @@ var geocoder;
 var map;
 var infoWindow;
 var marker;
+var lat;
+var long;
 
 $.getScript(scriptkey, function() {
 
-   
     initMap();
 
     var addressData = {
@@ -56,9 +57,12 @@ $.getScript(scriptkey, function() {
     }
 
     function codeAddress(geocoder, map) {
-        console.log("TEST");
+        console.log("Coding address...");
         geocoder.geocode({'address': addressData.address}, function(results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
+                console.log("Address at: " + results[0].geometry.location);
+                lat = results[0].geometry.location.lat();
+                long = results[0].geometry.location.lng();
                 marker.setPosition(results[0].geometry.location);
                 map.setCenter(results[0].geometry.location);
                 map.setZoom(15);
@@ -75,18 +79,16 @@ $.getScript(scriptkey, function() {
         // calls codeAddress method (above) to plot a new marker
         codeAddress(geocoder, map);
         // sleep(10000);
-        // $('#map').show();
+
+        // Set submit button to be enabled
+        $('#AddressSubmit').removeAttr("disabled");
+        $('#AddressSubmit').attr("enabled","");
+
+        // Scroll to be able to see the button if unable to
+        document.getElementById('AddressSubmit').scrollIntoView({behavior: "smooth"});
+
     });
 
-    // Custom function to make the computer wait...
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > milliseconds){
-                break;
-            }
-        }
-    }
 });
 
 var ready = false;
@@ -99,41 +101,49 @@ function loading() {
 }
 
 $(document).ready( function() {
+    const database = firebase.database();
+
     $('.preloader').hide();
     ready = true;
     console.log('loaded!');
 
-    $('#insertButton').click(()=>{
-        const name = $('#insertNameBox').val();
-        const location = $('#insertLocationBox').val();
-        const experience = $('#insertExperienceBox').val();
-  
-        if (name == null || name == "") {
-          $('#insertNameBox').addClass("invalidInput");
-        }
-        if (location == null || location == "") {
-          $('#insertLocationBox').addClass("invalidInput");
-        }
-        if (experience == null || experience == "") {
-          $('#insertExperienceBox').addClass("invalidInput");
+    $('#AddressSubmit').click(()=>{
+        // get session name
+        const name = localStorage.getItem("keyName");
+        
+        const address = $('#AddressSearchBar').val();
+
+        if (address == null || address == "") {
+          $('#AddressSearchBar').addClass("invalidInput");
         }
         else {
-          database.ref('users/'+name).set({
-            location: location,
-            experience: experience,
-          }, (error)=> {
-            if(error) {
-              console.log("Error:" +  error);
-              // write failed
-              snackbarActivate("An error occured when adding " + name + " to the database: " + error);
-            }
-            else {
-              // data saved successfully
-              snackbarActivate(name + " added to the database");
-            }
-          });
+            database.ref('users/'+name).update({
+                address: address,
+                coordinates: {lat, long},
+			}, (error)=> {
+                if(error) {
+                    console.log("Error:" +  error);
+                    // write failed
+                    alert("An error occured for updating " + name + " in the database: " + error);
+                }
+                else {
+                    // data saved successfully
+                    snackbarActivate("Address for " + name + " added to the database");
+                    window.location.href = "instructor_prof.html";
+                }
+            });
           
         }
       });
 
 });
+
+// Custom function to make the computer wait...
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds){
+            break;
+        }
+    }
+}

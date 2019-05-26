@@ -159,16 +159,29 @@ section {
 /* ------------------------- Google_Maps_API.html -------------------------- */
 
 #map {
-    height: 70%;
+    height: 60%;
     width: auto;
     margin: 20px 100px 20px 100px;
 }
 @media screen and (max-height: 450px) {
 	#map {
-        height: 70%;
+        height: 60%;
         width: auto;
         margin: 20px;
     }
+}
+
+#AddressSubmit[disabled] {
+	background-color: #F1F1F1;
+}
+#AddressSubmit[enabled] {
+	animation: pulse 1s;
+}
+
+@keyframes pulse {
+	from { transform: scale(1); }
+  50% { transform: scale(1.10); }
+  to { transform: scale(1); }
 }
 
 /* ------------------------------------------------------------------------- */
