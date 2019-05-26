@@ -60,33 +60,21 @@ firebase.initializeApp(firebaseConfig);
       <br><br>
       <div class = "startForm">
         <!-- <form onsubmit = "validate()"> -->
-        <form action = "Google_Maps_API.html">
-            First name: <input id="firstNameInput" type = "text" name = "FirstName" ><br>
-            Last name: <input id="lastNameInput" type = "text" name = "LastName"><br>
-            Email: <input id="emailInput" type = "text" name = "LastName"><br>
-            Phone number: <input id="phoneInput" type = "text" name = "LastName"><br>
-            
- 
+        <form action = "instructor_detail.html" onsubmit="return false">
+          First Name: <input id="firstNameInput" type = "text" name = "FirstName" placeholder="First name..."><br><br>
+          Last Name: <input id="lastNameInput" type = "text" name = "LastName" placeholder="Last name..."><br><br>
+          Username: <input id="usernameInput" type = "text" name = "UserName" placeholder="Username..."><br><br>
+          Password: <input id="passwordInput" type = "text" name = "Password" placeholder="Password..."> <br><br>
+          Password (re-enter): <input id="passwordVerifyInput" type = "text" name = "PasswordVerify" placeholder="Re-enter your password..." onkeyup="verify()"> <br><br>
+          Email: <input id= "emailInput" type = "email" name = "Email" placeholder="Email..."> <br><br>
+          Phone Number: <input id = "phoneNumberInput" type = "text" name = "PhoneNumber" maxlength="10" placeholder="Phone Number..."><br><br>
           
-              Years of Experience: <input id = "experienceInput" type="text" name = "Years"><br><br>
-              About me: <input id = "aboutInput" type="text" name ="personal info"> <br><br>
-              Pricing: <input id = "priceInput" type="text" name ="prices"> <br><br>
-              <div class ="col">
-                Availability:
-                <select class ="form-control" id="availabilityInput">
-                  <option>Monday</option>
-                  <option>Tuesday</option>
-                  <option>Wednesday</option>
-                  <option>Thursday</option>
-                  <option>Friday</option>
-                  <option>Satday</option>
-                  <option>Sunday</option>
-                </select>
-              </div>
-              Pictures/Portfolios: <br><br><br>
-              <input id = "instructorSubmit" type="submit" value = "Continue to Add Address">
-            </form>
+          <button class="btn btn-outline-primary btn-lg" id="instructorStartSubmit">Save and Continue</buttony>
+        </form> 
       </div>
+
+      <!-- Status Confirmation Snackbar -->
+      <div id="snackbar" class=""></div>
 
 
     </div>
@@ -98,6 +86,8 @@ firebase.initializeApp(firebaseConfig);
 
     <!-- Custom JS -->
     <script src="./js/instructor_start.js"></script>
+    <!-- To be able to have data across multiple pages -->
+    <script src="./js/instructor_sign_up_global.js"></script>
 
 </body>
 </html>

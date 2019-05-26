@@ -57,25 +57,34 @@ firebase.initializeApp(firebaseConfig);
 
       
       <div class = "startForm">
-          <form action = "instructor_prof.html">
-              Years of Experience: <input type="text" name = "Years"><br><br>
-              About me: <input type="text" name ="personal info"> <br><br>
-              Pricing: <input type="text" name ="prices"> <br><br>
+          <form onsubmit="return false">
+              Years of Experience: <input id = "experienceInput" type="text" name = "Years"><br><br>
+              About me: <input id = "aboutInput" type="text" name ="personal info"> <br><br>
+              Pricing: <input id = "priceInput" type="text" name ="prices"> <br><br>
               <div class ="col">
-              Availability:
-              <select class ="form-control" id="day availability">
-                <option>Monday</option>
-                <option>Tuesday</option>
-                <option>Wednesday</option>
-                <option>Thursday</option>
-                <option>Friday</option>
-                <option>Satday</option>
-                <option>Sunday</option>
-              </select>
+                Availability:
+                <select class ="form-control" id="availabilityInput">
+                  <option>Monday</option>
+                  <option>Tuesday</option>
+                  <option>Wednesday</option>
+                  <option>Thursday</option>
+                  <option>Friday</option>
+                  <option>Satday</option>
+                  <option>Sunday</option>
+                </select>
               </div>
-              Pictures/Portfolios: <br><br><br>
-              <input type="submit" value = "Create profile">
-            </form>
+
+              <br><br>
+              Profile Picture: <br>
+              <input id="profileInput" type="file" name= "pic" accept ="image/*" multiple> 
+              <br><br>
+            Portfolio<br>
+             (Show us a sample of what you can play):<br>
+              <input id="portfolioInput" type="file" name= "portfolio" accept = "audio/*" multiple>
+              
+              <br><br>
+              <button class="btn btn-outline-primary btn-lg" id="instructorDetailSubmit">Save and Continue</buttony>
+          </form>
         
       </div>
 
@@ -83,13 +92,23 @@ firebase.initializeApp(firebaseConfig);
     </div>
 
 
-    <a href="Google_Maps_API.html">Previous</a>
+    <a href="instructor_start.html">Previous</a>
+
+    <!-- Status Confirmation Snackbar -->
+    <div id="snackbar" class=""></div>
+
+
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- buttons.js -->
+    <script src = "buttons.js" defer></script>
+    <!-- Custom JS -->
+    <script src="./js/instructor_detail.js"></script>
 
 </body>
 </html>

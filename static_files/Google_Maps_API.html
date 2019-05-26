@@ -63,7 +63,7 @@
     </nav>
 
     <h1>Instructor Location</h1>
-    <a href="instructor_start.html">Previous</a>
+    <a href="instructor_detail.html">Previous</a>
   
     <div align ="center">
       <h4>Where are you located?</h4>
@@ -91,13 +91,16 @@
     
     <div class="container">
       <div class="col-4-lg col-6-md col-12-sm col-12-xs">
-        <button class="btn btn-outline-primary btn-lg btn-block">Continue to My Profile</button>
+        <button id="AddressSubmit" class="btn btn-outline-primary btn-lg btn-block" disabled>Submit</button>
       </div>
     </div>
     
     <hr>
 
-  </br>
+    </br>
+
+    <!-- Status Confirmation Snackbar -->
+    <div id="snackbar" class=""></div>
  
 
     <!-- SCRIPT TAGS HERE -->
@@ -105,27 +108,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <!-- <script defer type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=
-    AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY
-    ">
-    </script> -->
-
+    <script src="buttons.js"></script>
     <script src="./js/instructor_location.js"></script>
     
     <script>
-      // Call the function
-      // initialize();
-
-      // function initialize() {
-      //   initMap();
-      // }
       
       /* Confirms Refresh - Used to debug */
-      window.onbeforeunload = function(event)
-      {
-          return confirm("Confirm refresh");
-      };
+      // window.onbeforeunload = function(event)
+      // {
+      //     return confirm("Confirm refresh");
+      // };
     </script>
   </body>
 </html>
