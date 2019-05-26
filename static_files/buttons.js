@@ -149,18 +149,18 @@ $(document).ready(() =>{
 //instructor_start.html scripts
 
     //add new user
-    $('#instructorSubmit').click(()=>{
-        const firstName = $('#firstNameInput').val()
-        const lastName = $('#lastNameInput').val()
-        const email = $('#emailInput').val()
-        const phone = $('#phoneInput').val()
-        const experience = $('#experienceInput').val()
-        const about = $('#aboutInput').val()
-        const pricing = $('#priceInput').val()
-        const availability =  $('#availabilityInput').val()
-        const userId = firstName.substring(0,1).toLowerCase()+lastName
-        writeUserData(userId, firstName, lastName, email, phone, experience, about, pricing, availability);
-      });
+    // $('#instructorSubmit').click(()=>{
+    //     const firstName = $('#firstNameInput').val()
+    //     const lastName = $('#lastNameInput').val()
+    //     const email = $('#emailInput').val()
+    //     const phone = $('#phoneInput').val()
+    //     const experience = $('#experienceInput').val()
+    //     const about = $('#aboutInput').val()
+    //     const pricing = $('#priceInput').val()
+    //     const availability =  $('#availabilityInput').val()
+    //     const userId = firstName.substring(0,1).toLowerCase()+lastName
+    //     writeUserData(userId, firstName, lastName, email, phone, experience, about, pricing, availability);
+    //   });
 
 function snackbarActivate(text) {
 	// Fill the snackbar with the text parameter
