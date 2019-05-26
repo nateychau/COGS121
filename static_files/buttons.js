@@ -1,33 +1,68 @@
-
 $(document).ready(() =>{
     const database = firebase.database();
 
-    //index.html scripts
+    //Add new user
+    function writeUserData(userId, firstName, lastName, email, phone, experience, about, pricing, availability) {
+      firebase.database().ref('users/' + userId).set({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        experience: experience,
+        about: about,
+        pricing: pricing,
+        availability: availability
+      });
+    }
+
+
+    //Delete user
+    function deleteUser(userId){
+      firebase.database().ref('users/'+ userId).remove();
+    }
+    
+    //Search for instructors based on name and/or location
+    function search(userName, location){
+      firebase.database().ref('search').set({
+        searchName: userName,
+        searchNear: location
+      });
+    }
+
+
+
+  //   //Read a user's data
+  //   function readUserDetail(userId, reqDetail){
+  //     database.ref('users/' + userId).once('value', function(snapshot){
+  //         const detail = snapshot.child(reqDetail).val();
+  //   });
+  //   return detail;
+  // }
+
+
+
+
+
+  //index.html scripts
+
+    //reset database
     $('#resetButton').click(()=>{
       console.log('Resetting database');
-
-
+     
+      //clear current database
       database.ref('users/').remove();
 
-      database.ref('users/Eric').set({lastname: 'Wang', location: 'San Diego', experience: 'none'});
-      database.ref('users/Joseph').set({lastname: 'Tsai', location: 'Anaheim', experience: '-4 years'});
-      database.ref('users/Mel').set({lastname: 'Lee', location: 'Los Angeles', experience: '6 years'});
+      //write base user data
+      writeUserData('eWang', 'Eric', 'Wang', 'ewang@ucsd.edu', '123', '2 years', 'heck', '$5/hr', 'Sunday');
+      writeUserData('jTsai', 'Joseph', 'Tsai', 'jtsai@ucsd.edu', '456', '-4 years', 'tough', '$0/hr', 'None');
+      writeUserData('mLee', 'Mel', 'Lee', 'mlee@ucsd.ed', '789', '1 year', 'burr', '$2/hr', 'Monday');
     });
 
+    //delete user from database
     $('#deleteButton').click(()=>{
-      const name = $('#deleteNameBox').val();
-      database.ref('users/'+ name).remove();
+      const userId = $('#deleteNameBox').val();
+      deleteUser(userId);
     });
-
-    $('#insertButton').click(()=>{
-      const name = $('#insertNameBox').val()
-
-      database.ref('users/'+name).set({
-        location: $('#insertLocationBox').val(),
-        experience: $('#insertExperienceBox').val()
-      });
-    });
-
     
     $('#homeSearch').click(()=>{
       database.ref('users/').once('value', (snapshot)=>{
@@ -38,75 +73,35 @@ $(document).ready(() =>{
       )
     });
 
-    //result.html scripts
-    $('#ResultDisplay').click(()=>{
-      database.ref('users/').once('value', (snapshot)=>{
-        const data = snapshot.val();
-        console.log('you received some data', Object.keys(data));
-        //$('#status').html('all users:'+ Object.keys(data));
-        if (!data) {
-          // clear the display
-          $('#nameDiv').html('');
-          $('#locationDiv').html('');
-          $('#pricingDiv').html('');
-          return;
-        }
-        if (data.experience && data.lastname && data.location) {
-          $('#nameDiv').html(data + '&nbsp' + data.lastname);
-          $('##locationDiv').html(data.location);
-         // $('#pricingDiv').html(data.experience);
-        } else {
-          // clear the display
-          $('#nameDiv').html('');
-          $('#locationDiv').html('');
-          $('#pricingDiv').html('');
-        }
-      });
+    //save search query
+    $('#instructorSearch').click(()=>{
+      const userName = $('#nameVal').val();
+      const near = $('#locationVal').val();
+      search(userName, near);
+      location.href = 'results.html';
     });
 
 
-    // $('#nameSearch').click(() => {
-    //   const searchName = $('#nameVal').val();
-    //   const key = 'users/' + $('#nameVal').val();
-    //   console.log(searchName);
-    //   window.location.href = "results.html"
-    //   $('#query').html(searchName);
-    //   // 'once' reads the value once from the database
-    //   database.ref(key).once('value', (snapshot) => {
-    //     const data = snapshot.val();
-    //     console.log('You received some data!', data);
-    //     if (!data) {
-    //       // clear the display
-    //       $('#nameDiv').html('');
-    //       $('#locationDiv').html('');
-    //       $('#pricingDiv').html('');
-    //       return;
-    //     }
-    //     if (data.experience && data.lastname && data.location) {
-    //       $('#nameDiv').html(data + '&nbsp' + data.lastname);
-    //       $('##locationDiv').html(data.location);
-    //      // $('#pricingDiv').html(data.experience);
-    //     } else {
-    //       // clear the display
-    //       $('#nameDiv').html('');
-    //       $('#locationDiv').html('');
-    //       $('#pricingDiv').html('');
-    //     }
-    //   });
-    // });
-  
+
+
+
 //instructor_start.html scripts
+
+    //add new user
     $('#instructorSubmit').click(()=>{
-        const name = $('#firstNameInput').val()
-  
-        database.ref('users/'+name).set({
-            lastname: $('#lastNameInput').val(),
-            experience: $('#experienceInput').val(),
-            about: $('#aboutInput').val(),
-            price: $('#priceInput').val(),
-            availability: $('#availabilityInput').val()
-        });
+        const firstName = $('#firstNameInput').val()
+        const lastName = $('#lastNameInput').val()
+        const email = $('#emailInput').val()
+        const phone = $('#phoneInput').val()
+        const experience = $('#experienceInput').val()
+        const about = $('#aboutInput').val()
+        const pricing = $('#priceInput').val()
+        const availability =  $('#availabilityInput').val()
+        const userId = firstName.substring(0,1).toLowerCase()+lastName
+        writeUserData(userId, firstName, lastName, email, phone, experience, about, pricing, availability);
       });
 
 
+
+//close document.ready
   });
