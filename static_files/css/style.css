@@ -185,8 +185,11 @@ section {
 }
 
 /* ------------------------------------------------------------------------- */
-
-
+/* ------------------------- instructor_prof.html -------------------------- */
+#mapProf {
+	width: 100%;
+	height: 300px;
+}
 
 
 /* FROM HERE BELOW IS CURRENTLY UNUSED STUFF I THINK */
