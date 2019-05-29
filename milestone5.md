@@ -5,6 +5,32 @@ UI changes that have been made include a cleaned up and revamped home page with 
 
 UI screenshots:
 
+index_html:
+![index_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(692).png)
+
+results.html:
+![results_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(681).png)
+
+instructor_start.html:
+![instructor_start_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(684).png)
+
+instructor_start.html with validity check:
+![instructor_start_html_2](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(685).png)
+
+instructor_detail.html:
+![instructor_detail_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(686).png)
+
+Google_Maps_API.html:
+![Google_Maps_API_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(688).png)
+
+Google_Maps_API.html with validity check and marker:
+![Google_Maps_API_html_2](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(689).png)
+
+instructor_prof.html:
+![instructor_prof_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(690).png)
+
+login.html:
+![login_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(693).png)
 
 
 Screenshots of data display:
