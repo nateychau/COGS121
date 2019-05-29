@@ -17,9 +17,9 @@ $(document).ready(() =>{
               const phone = childSnapshot.child('phone').val();
               const price = childSnapshot.child('price').val();
               if(searchName == "" && searchNear == ""){ 
-                $('#query').html('All users');
+              $('#query').html('All users');
               $('#status').append(
-                  '<br> Name: '+firstname+ ' '+lastname+ '<br>'+
+                  '<br> Name: <a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
                   'User ID: '+username + '<br>' +
                   'Email: '+email+ '<br>'+
                   'Phone: '+phone +'<br>'+
@@ -28,6 +28,12 @@ $(document).ready(() =>{
                   'Availability: '+availability +'<br>'+
                   'Price: '+price+'<br><br>'
                 );
+                console.log($('#'+username+'ProfLink').html());
+                console.log(document.getElementById(username+'ProfLink').id);
+                $('#'+username+'ProfLink').click(()=>{
+                  console.log(username +'clicked');
+                  localStorage.setItem('keyName', username);
+                });
               
             }
             if(searchName != ""){
@@ -37,7 +43,7 @@ $(document).ready(() =>{
                 );
                 if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
                 $('#status').html(
-                  '<br> Name: '+firstname+ ' '+lastname+ '<br>'+
+                  '<br> Name: <a href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
                   'User ID: '+username + '<br>' +
                   'Email: '+email+ '<br>'+
                   'Phone: '+phone +'<br>'+
@@ -72,5 +78,6 @@ $(document).ready(() =>{
         
         });
       //});
+      
 
 });
