@@ -2,31 +2,29 @@ $(document).ready(() =>{
     const database = firebase.database();
 
     //Add new user
-    function writeUserData(userId, firstName, lastName, email, phone, experience, about, pricing, availability) {
-      firebase.database().ref('users/' + userId).set({
-        firstName: firstName,
-        lastName: lastName,
+    function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability) {
+      firebase.database().ref('users/' + username).set({
+        firstname: firstname,
+        lastname: lastname,
         email: email,
         phone: phone,
         experience: experience,
         about: about,
-        pricing: pricing,
+        price: price,
         availability: availability
       });
     }
 
 
     //Delete user
-    function deleteUser(userId){
-      firebase.database().ref('users/'+ userId).remove();
+    function deleteUser(username){
+      firebase.database().ref('users/'+ username).remove();
     }
     
     //Search for instructors based on name and/or location
     function search(userName, location){
-      firebase.database().ref('search').set({
-        searchName: userName,
-        searchNear: location
-      });
+      localStorage.setItem("searchName", userName);
+      localStorage.setItem("searchNear", location);
     }
 
 
@@ -58,72 +56,6 @@ $(document).ready(() =>{
       writeUserData('mLee', 'Mel', 'Lee', 'mlee@ucsd.ed', '789', '1 year', 'burr', '$2/hr', 'Monday');
     });
 
-    //delete user from database
-    $('#deleteButton').click(()=>{
-      const userId = $('#deleteNameBox').val();
-      deleteUser(userId);
-    });
-
-    //index.html scripts
-    $('#resetButton').click(()=>{
-		console.log('Resetting database');
-
-
-		database.ref('users/').remove();
-
-		database.ref('users/Eric').set({lastname: 'Wang', location: 'San Diego', experience: 'none'});
-		database.ref('users/Joseph').set({lastname: 'Tsai', location: 'Anaheim', experience: '-4 years'});
-		database.ref('users/Mel').set({lastname: 'Lee', location: 'Los Angeles', experience: '6 years'});
-    });
-
-    $('#deleteButton').click(()=>{
-		const name = $('#deleteNameBox').val();
-		if (name == null || name == "") {
-			$('#deleteNameBox').addClass("invalidInput");
-		}
-		else {
-			database.ref('users/'+ name).remove();
-			$('#deleteNameBox').val("");
-			snackbarActivate(name + " deleted from the database");
-		}
-    });
-
-    $('#insertButton').click(()=>{
-		const name = $('#insertNameBox').val();
-		const location = $('#insertLocationBox').val();
-		const experience = $('#insertExperienceBox').val();
-
-		var inval = false;	// invalid input somewhere
-		if (name == null || name == "") {
-			$('#insertNameBox').addClass("invalidInput");
-			inval = true;
-		}
-		if (location == null || location == "") {
-			$('#insertLocationBox').addClass("invalidInput");
-			inval = true;
-		}
-		if (experience == null || experience == "") {
-			$('#insertExperienceBox').addClass("invalidInput");
-			inval = true;
-		}
-		if (!inval) {
-			database.ref('users/'+name).set({
-			location: location,
-			experience: experience,
-			}, (error)=> {
-			if(error) {
-				console.log("Error:" +  error);
-				// write failed
-				snackbarActivate("An error occured when adding " + name + " to the database: " + error);
-			}
-			else {
-				// data saved successfully
-				snackbarActivate(name + " added to the database");
-			}
-			});
-
-		}
-    });
     
     $('#homeSearch').click(()=>{
 		database.ref('users/').once('value', (snapshot)=>{
@@ -139,6 +71,8 @@ $(document).ready(() =>{
       const userName = $('#nameVal').val();
       const near = $('#locationVal').val();
       search(userName, near);
+      console.log(localStorage.getItem("searchName"));
+      console.log(localStorage.getItem("searchNear"));
       location.href = 'results.html';
     });
 
