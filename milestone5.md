@@ -1,9 +1,10 @@
 Free lance piano instructors can use our app to advertise themselves, and to get in contact with potential students. The instructor would create an account for themselves by signing-up and filling out all relevant information. They can specifically display there skills by adding media to their profile. This can be in the form of videos or mp3. Instructors can add videos of their own performances or student recitals, and mp3s of their own recordings. Instructors also specify their contact info, availability, pricing, and location. Students find instructors by searching on the home screen. They can search based on name (if they already know the name of an instructor they are looking for) or based on location if they just want to find instructors nearby. In future iterations, we will add sorting functionality, so that students can sort by distance, price, and availability. Once students find an instructor that they like, they can contact the instructor directly. 
 
+UI improvements:
+UI changes that have been made include a cleaned up and revamped home page with 2 search bars, and 2 testing buttons that will not be kept there in the final version. The search results lead to another page that displays the results of the specified search query. Within the instructor sign-up process, there are a number of significant improvements. The instructor sign-up process was split up from 2 pages into 3 pages. The first page contains information pertaining to contact and login information, the second page consists of more lesson-related items, as well as an option to add media and other links to showcase to potential students, and the third page is a slightly updated page to add Address. In all these pages, error/validity checking has been added with a visual cue whenever invalid or bad input has been received, which prevents going to the next page if the required information is not filled out or is invalid. The profile screen at the end of this process has been completely revamped and now displays pertinent information, a map of the address, and options to edit the information. Below are some of the screenshots of the updated UI.
+
 UI screenshots:
 
-
-UI improvements: 
 
 
 Screenshots of data display:
