@@ -4,8 +4,8 @@ $(document).ready(() =>{
     //instructor_start.html scripts
     $('#instructorDetailSubmit').click(()=>{
         // get session name
-        const name = localStorage.getItem("keyName");
-        console.log("Name:" + name);
+        const username = localStorage.getItem("keyName");
+        console.log("Name:" + username);
 
 		const experience = $('#experienceInput').val();
 		const about = $('#aboutInput').val();
@@ -33,7 +33,7 @@ $(document).ready(() =>{
         }
         console.log("invalid input:" + inval);
 		if (!inval) {
-			database.ref('users/'+name).update({
+			database.ref('users/'+username).update({
 				experience: experience,
 				about: about,
 				price: price,
@@ -48,7 +48,7 @@ $(document).ready(() =>{
                 }
                 else {
                     // data saved successfully
-                    snackbarActivate(name + " added to the database");
+                    snackbarActivate(username + " added to the database");
                     window.location.href = "Google_Maps_API.html";
                 }
             });

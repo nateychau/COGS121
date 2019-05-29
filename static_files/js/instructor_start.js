@@ -3,7 +3,9 @@ $(document).ready(() =>{
 
     //instructor_start.html scripts
     $('#instructorStartSubmit').click(()=>{
-		const name = $('#firstNameInput').val();
+        const ref = database.ref();
+        ref.once('value', function(snapshot){
+		const firstname = $('#firstNameInput').val();
 		const lastname = $('#lastNameInput').val();
 		const username = $('#usernameInput').val();
         const password = $('#passwordInput').val();
@@ -12,7 +14,7 @@ $(document).ready(() =>{
 		const phone = $('#phoneNumberInput').val();
 		
 		var inval = false;	// invalid input somewhere
-		if (name == null || name == "") {
+		if (firstname == null || firstname == "") {
 			$('#firstNameInput').addClass("invalidInput");
 			inval = true;
 		}
@@ -23,6 +25,12 @@ $(document).ready(() =>{
 		if (username == null || username == "") {
 			$('#usernameInput').addClass("invalidInput");
 			inval = true;
+        }
+        if(snapshot.child('users/'+username).exists()){
+            inval = true;
+            $('#usernameInput').addClass("invalidInput");
+            console.log(username + ' already exists');
+            alert(username +' already exists')
         }
         if (password == null || password == "") {
 			$('#passwordInput').addClass("invalidInput");
@@ -46,9 +54,9 @@ $(document).ready(() =>{
         }
         console.log("invalid input:" + inval);
 		if (!inval) {
-			database.ref('users/'+name).set({
+			database.ref('users/'+username).set({
 				lastname: lastname,
-				username: username,
+				firstname: firstname,
 				password: password,
 				email: email,
 				phone: phone,
@@ -56,11 +64,11 @@ $(document).ready(() =>{
                 if(error) {
                     console.log("Error:" +  error);
                     // write failed
-                    alert("An error occured when adding " + name + " to the database: " + error);
+                    alert("An error occured when adding " + username + " to the database: " + error);
                 }
                 else {
                     // data saved successfully
-                    snackbarActivate(name + " added to the database");
+                    snackbarActivate(username + " added to the database");
                     window.location.href = "instructor_detail.html";
                 }
             });
@@ -70,8 +78,11 @@ $(document).ready(() =>{
             // });
 
             // Save the name
-            localStorage.setItem('keyName',name);
-		}
+            localStorage.setItem('keyName',username);
+        }
+        
+
+    });
     });
 
 });
