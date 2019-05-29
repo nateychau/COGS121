@@ -35,6 +35,14 @@ login.html:
 
 Screenshots of data display:
 
+results.html:
+![results_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(681).png)
+
+Google_Maps_API.html with validity check and marker:
+![Google_Maps_API_html_2](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(689).png)
+
+instructor_prof.html:
+![instructor_prof_html](https://raw.githubusercontent.com/nateychau/COGS121/master/milestone%205%20screenshots/Screenshot%20(690).png)
 
 Description of data display:
 
