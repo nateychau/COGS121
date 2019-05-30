@@ -18,7 +18,7 @@ $(document).ready(() =>{
               const price = childSnapshot.child('price').val();
               if(searchName == "" && searchNear == ""){ 
                 $('#query').html('All users');
-              $('#status').append(
+                $('#status').append(
                   '<br> Name: '+firstname+ ' '+lastname+ '<br>'+
                   'User ID: '+username + '<br>' +
                   'Email: '+email+ '<br>'+
