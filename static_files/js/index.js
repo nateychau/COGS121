@@ -2,7 +2,7 @@ $(document).ready(() =>{
     const database = firebase.database();
 
     //Add new user
-    function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability) {
+    function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability,prof) {
       firebase.database().ref('users/' + username).set({
         firstname: firstname,
         lastname: lastname,
@@ -11,7 +11,8 @@ $(document).ready(() =>{
         experience: experience,
         about: about,
         price: price,
-        availability: availability
+        availability: availability,
+        prof: prof
       });
     }
 
@@ -51,9 +52,9 @@ $(document).ready(() =>{
       database.ref('users/').remove();
 
       //write base user data
-      writeUserData('eWang', 'Eric', 'Wang', 'ewang@ucsd.edu', '123', '2 years', 'heck', '$5/hr', 'Sunday');
-      writeUserData('jTsai', 'Joseph', 'Tsai', 'jtsai@ucsd.edu', '456', '-4 years', 'tough', '$0/hr', 'None');
-      writeUserData('mLee', 'Mel', 'Lee', 'mlee@ucsd.ed', '789', '1 year', 'burr', '$2/hr', 'Monday');
+      writeUserData('eWang', 'Eric', 'Wang', 'ewang@ucsd.edu', '123', '2 years', 'heck', '$5/hr', 'Sunday', 'bear.jpg');
+      writeUserData('jTsai', 'Joseph', 'Tsai', 'jtsai@ucsd.edu', '456', '-4 years', 'tough', '$0/hr', 'None','donkey.jpg');
+      writeUserData('mLee', 'Mel', 'Lee', 'mlee@ucsd.ed', '789', '1 year', 'burr', '$2/hr', 'Monday','cat.jpg');
     });
 
     

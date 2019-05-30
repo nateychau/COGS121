@@ -3,6 +3,9 @@ $(document).ready(() =>{
     const database = firebase.database();
     const searchName = localStorage.getItem("searchName");
     const searchNear = localStorage.getItem('searchNear');
+    
+    
+    
     //Show all users
         database.ref('users/').once('value', function(snapshot){
                    
@@ -16,6 +19,9 @@ $(document).ready(() =>{
               const lastname = childSnapshot.child('lastname').val();
               const phone = childSnapshot.child('phone').val();
               const price = childSnapshot.child('price').val();
+              let prof = childSnapshot.child('prof').val();
+              //var profilepic = document.createElement("img");
+              
               if(searchName == "" && searchNear == ""){ 
                 $('#query').html('All users');
               $('#status').append(
@@ -26,8 +32,12 @@ $(document).ready(() =>{
                   'About: '+about +'<br>'+
                   'Experience: '+experience +'<br>'+
                   'Availability: '+availability +'<br>'+
-                  'Price: '+price+'<br><br>'
+                  'Price: '+price+'<br>' +
+                  'Profile Pic:' + prof+ '<br>'
                 );
+                //document.getElementById("profilepic").src = prof;
+                $("#status").append("<img id='profilepic' src=prof/>" + '<br>');
+                
               
             }
             if(searchName != ""){
@@ -44,7 +54,8 @@ $(document).ready(() =>{
                   'About: '+about +'<br>'+
                   'Experience: '+experience +'<br>'+
                   'Availability: '+availability +'<br>'+
-                  'Price: '+price+'<br><br>'
+                  'Price: '+price+'<br>'+
+                  'Profile Pic:' + prof+ '<br><br>'
                 );
                 }
                 else{
@@ -56,7 +67,8 @@ $(document).ready(() =>{
                     'About: '+about +'<br>'+
                     'Experience: '+experience +'<br>'+
                     'Availability: '+availability +'<br>'+
-                    'Price: '+price+'<br><br>'
+                    'Price: '+price+'<br>'+
+                    'Profile Pic:' + prof+ '<br><br>'
                   );
                 }
               }
