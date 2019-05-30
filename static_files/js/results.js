@@ -33,10 +33,11 @@ $(document).ready(() =>{
                   'Experience: '+experience +'<br>'+
                   'Availability: '+availability +'<br>'+
                   'Price: '+price+'<br>' +
-                  'Profile Pic:' + prof+ '<br>'
+                  'Profile Pic:' +
+                  '<img class="profilepic" src='+prof+"/>  <br>"
                 );
-                //document.getElementById("profilepic").src = prof;
-                $("#status").append("<img id='profilepic' src=prof/>" + '<br>');
+                
+               
                 
               
             }
@@ -55,7 +56,8 @@ $(document).ready(() =>{
                   'Experience: '+experience +'<br>'+
                   'Availability: '+availability +'<br>'+
                   'Price: '+price+'<br>'+
-                  'Profile Pic:' + prof+ '<br><br>'
+                  'Profile Pic:' +
+                  '<img class="profilepic" src='+prof+"/>  <br>"
                 );
                 }
                 else{
@@ -68,7 +70,8 @@ $(document).ready(() =>{
                     'Experience: '+experience +'<br>'+
                     'Availability: '+availability +'<br>'+
                     'Price: '+price+'<br>'+
-                    'Profile Pic:' + prof+ '<br><br>'
+                    'Profile Pic:' +
+                    '<img class="profilepic" src='+prof+"/>  <br>"
                   );
                 }
               }

@@ -1,7 +1,8 @@
 var selectedFile;
+const database = firebase.database();
 
 $(document).ready(() =>{
-    const database = firebase.database();
+    
 
     //instructor_start.html scripts
     $('#instructorDetailSubmit').click(()=>{
@@ -13,8 +14,7 @@ $(document).ready(() =>{
 		const about = $('#aboutInput').val();
         const price = $('#priceInput').val();
         const availability = $('#availabilityInput').val();
-		const prof = $('#profileInput').val();
-		const phone = $('#portfolioInput').val();
+		
 		
 		var inval = false;	// invalid input somewhere
 		if (experience == null || experience == "") {
@@ -39,7 +39,8 @@ $(document).ready(() =>{
 				experience: experience,
 				about: about,
 				price: price,
-				availability: availability,
+                availability: availability,
+                
                 // Add database for picture and portfolio someone plz
                 
 			}, (error)=> {
@@ -117,7 +118,13 @@ function uploadFile(){
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
         //var downloadURL = uploadTask.snapshot.downloadURL;
         console.log('File available at', downloadURL);
+        const username = localStorage.getItem("keyName");
+            database.ref('users/'+username).update({
+                prof: downloadURL,
+            });
         });
+
     });
     
 }
+
