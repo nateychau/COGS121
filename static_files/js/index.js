@@ -2,7 +2,7 @@ $(document).ready(() =>{
     const database = firebase.database();
 
     //Add new user
-    function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability) {
+    function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability,prof) {
       firebase.database().ref('users/' + username).set({
         firstname: firstname,
         lastname: lastname,
@@ -11,7 +11,8 @@ $(document).ready(() =>{
         experience: experience,
         about: about,
         price: price,
-        availability: availability
+        availability: availability,
+        prof: prof
       });
     }
 
@@ -51,9 +52,12 @@ $(document).ready(() =>{
       database.ref('users/').remove();
 
       //write base user data
-      writeUserData('eWang', 'Eric', 'Wang', 'ewang@ucsd.edu', '123', '2 years', 'heck', '$5/hr', 'Sunday');
-      writeUserData('jTsai', 'Joseph', 'Tsai', 'jtsai@ucsd.edu', '456', '-4 years', 'tough', '$0/hr', 'None');
-      writeUserData('mLee', 'Mel', 'Lee', 'mlee@ucsd.ed', '789', '1 year', 'burr', '$2/hr', 'Monday');
+      writeUserData('eWang', 'Eric', 'Wang', 'ewang@ucsd.edu', '123', '2 years', 'heck', '$5/hr', 'Sunday', 
+        'https://firebasestorage.googleapis.com/v0/b/cogs121-4f067.appspot.com/o/ProfilePics%2Fbear.jpg?alt=media&token=db0658d2-2d80-4aad-91d2-33fd7cbb0f41');
+      writeUserData('jTsai', 'Joseph', 'Tsai', 'jtsai@ucsd.edu', '456', '-4 years', 'tough', '$0/hr', 'None',
+      'https://firebasestorage.googleapis.com/v0/b/cogs121-4f067.appspot.com/o/ProfilePics%2Fcat.jpg?alt=media&token=362b2b2e-b6e7-43f0-9ed2-314e204f0f56');
+      writeUserData('mLee', 'Mel', 'Lee', 'mlee@ucsd.ed', '789', '1 year', 'burr', '$2/hr', 'Monday',
+      'https://firebasestorage.googleapis.com/v0/b/cogs121-4f067.appspot.com/o/ProfilePics%2Fdonkey.jpg?alt=media&token=c6bf0b91-37d9-40e5-9653-1345b3e61c88');
     });
 
     

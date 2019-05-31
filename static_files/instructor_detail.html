@@ -76,14 +76,15 @@ firebase.initializeApp(firebaseConfig);
 
               <br><br>
               Profile Picture: <br>
-              <input id="profileInput" type="file" name= "pic" accept ="image/*" multiple> 
-              <br><br>
-            Portfolio<br>
+              <input id="profileInput" type="file" accept="image/*"> 
+              
+              <button type ="button btn-primary" id = "uploadButton" onclick = "uploadFile()">Submit </button>
+            <!--Portfolio<br>
              (Show us a sample of what you can play):<br>
               <input id="portfolioInput" type="file" name= "portfolio" accept = "audio/*" multiple>
-              
+            -->
               <br><br>
-              <button class="btn btn-outline-primary btn-lg" id="instructorDetailSubmit">Save and Continue</buttony>
+              <button class="btn btn-outline-primary btn-lg" id="instructorDetailSubmit" >Save and Continue</button>
           </form>
         
       </div>
