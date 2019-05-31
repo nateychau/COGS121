@@ -51,7 +51,7 @@ $(document).ready(() =>{
                 );
                 if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
                 $('#status').html(
-                  '<br> Name: <a href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
+                  '<br> Name: <a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
                   'User ID: '+username + '<br>' +
                   'Email: '+email+ '<br>'+
                   'Phone: '+phone +'<br>'+
@@ -62,10 +62,16 @@ $(document).ready(() =>{
                   'Profile Pic:' +
                   '<img class="profilepic" src='+prof+"/>  <br>"
                 );
+                console.log($('#'+username+'ProfLink').html());
+                console.log(document.getElementById(username+'ProfLink').id);
+                $('#'+username+'ProfLink').click(()=>{
+                  console.log(username +'clicked');
+                  localStorage.setItem('keyName', username);
+                });
                 }
                 else{
                   $('#status').append(
-                    '<br> Name: '+firstname+ ' '+lastname+ '<br>'+
+                    '<br> Name: <a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
                     'User ID: '+username + '<br>' +
                     'Email: '+email+ '<br>'+
                     'Phone: '+phone +'<br>'+
@@ -76,6 +82,12 @@ $(document).ready(() =>{
                     'Profile Pic:' +
                     '<img class="profilepic" src='+prof+"/>  <br>"
                   );
+                  console.log($('#'+username+'ProfLink').html());
+                console.log(document.getElementById(username+'ProfLink').id);
+                $('#'+username+'ProfLink').click(()=>{
+                  console.log(username +'clicked');
+                  localStorage.setItem('keyName', username);
+                });
                 }
               }
               //console.log($('#status').html());
