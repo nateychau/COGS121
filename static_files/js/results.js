@@ -1,5 +1,10 @@
+
+ var playtoggle;
+ 
+
 //result.html scripts
 $(document).ready(() =>{
+   
     const database = firebase.database();
     const searchName = localStorage.getItem("searchName");
     const searchNear = localStorage.getItem('searchNear');
@@ -25,6 +30,7 @@ $(document).ready(() =>{
               const price = childSnapshot.child('price').val();
               let prof = childSnapshot.child('prof').val();
               let port = childSnapshot.child('port').val();
+              const audioid = childSnapshot.child('audioid').val();
               const lat = childSnapshot.child('coordinates/lat').val();
               const long = childSnapshot.child('coordinates/lat').val();
               //var profilepic = document.createElement("img");
@@ -45,7 +51,8 @@ $(document).ready(() =>{
                       'Availability: '+availability +'<br>'+
                       'Price: '+price+'<br>' +
                       'Portfolio: ' +
-                      '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>' +
+                      '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
+                      
                     '</div>'+
                     '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
                   '</div>'
@@ -76,7 +83,7 @@ $(document).ready(() =>{
                   'Profile Pic:' +
                   '<img class="profilepic" src='+prof+"/>  <br>"+
                   'Portfolio: ' +
-                  '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>'
+                  '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'
                 );
                 console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
@@ -98,7 +105,8 @@ $(document).ready(() =>{
                     'Profile Pic:' +
                     '<img class="profilepic" src='+prof+"/>  <br>"+
                     'Portfolio: ' +
-                    '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>'
+                    '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'
+                    
                   );
                   console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
@@ -121,11 +129,24 @@ $(document).ready(() =>{
         });
       //});
       
+     
 
 });
 
+function PlaySound(audioid) {
+  console.log(audioid);
+  var audioinputstring = '"' +audioid +'\"';
+  console.log(audioinputstring);
+  var a = document.getElementById(audioid);
+  console.log(a);
+  if (a.playing) {
+    console.log( "MADE IT INTO A.PLAYING, paused");
+    a.pause();    
 
-function PlaySound(url) {
-  var a = new Audio(url);
-  a.play();
-}
+  } else{
+    console.log("MADE IT INTO A.ELSE, playing");
+    a.play();
+  } 
+    
+};  
+      

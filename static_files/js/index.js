@@ -2,7 +2,7 @@ $(document).ready(() =>{
     const database = firebase.database();
 
     //Add new user
-    function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability,prof) {
+    function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability,prof,port,audioid) {
       firebase.database().ref('users/' + username).set({
         firstname: firstname,
         lastname: lastname,
@@ -12,7 +12,9 @@ $(document).ready(() =>{
         about: about,
         price: price,
         availability: availability,
-        prof: prof
+        prof: prof,
+        port: port,
+        audioid: audioid
       });
     }
 

@@ -173,6 +173,7 @@ function uploadFile2(){
         const username = localStorage.getItem("keyName");
             database.ref('users/'+username).update({
                 port: downloadURL,
+                audioid: username + "audio"
             });
         });
         
