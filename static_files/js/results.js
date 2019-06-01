@@ -3,6 +3,10 @@ $(document).ready(() =>{
     const database = firebase.database();
     const searchName = localStorage.getItem("searchName");
     const searchNear = localStorage.getItem('searchNear');
+
+    if (searchName != "" || searchName != null) {
+      
+    }
     
     
     
@@ -21,23 +25,30 @@ $(document).ready(() =>{
               const price = childSnapshot.child('price').val();
               let prof = childSnapshot.child('prof').val();
               let port = childSnapshot.child('port').val();
+              const lat = childSnapshot.child('coordinates/lat').val();
+              const long = childSnapshot.child('coordinates/lat').val();
               //var profilepic = document.createElement("img");
               
               if(searchName == "" && searchNear == ""){ 
               $('#query').html('All users');
               $('#status').append(
-                  '<br> Name: <a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
-                  'User ID: '+username + '<br>' +
-                  'Email: '+email+ '<br>'+
-                  'Phone: '+phone +'<br>'+
-                  'About: '+about +'<br>'+
-                  'Experience: '+experience +'<br>'+
-                  'Availability: '+availability +'<br>'+
-                  'Price: '+price+'<br>' +
-                  'Profile Pic:' +
-                  '<img class="profilepic" src='+prof+"/>  <br>"+
-                  'Portfolio: ' +
-                  '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>' 
+                  '<div class="card">' +
+                    '<div class="card-body">'+
+                      '<a id ="'+username+'ProfLink">'+
+                        '<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
+                      '</a>'+
+                      'User ID: '+username + '<br>' +
+                      'Email: '+email+ '<br>'+
+                      'Phone: '+phone +'<br>'+
+                      'About: '+about +'<br>'+
+                      'Experience: '+experience +'<br>'+
+                      'Availability: '+availability +'<br>'+
+                      'Price: '+price+'<br>' +
+                      'Portfolio: ' +
+                      '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>' +
+                    '</div>'+
+                    '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                  '</div>'
                 );
                 console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
