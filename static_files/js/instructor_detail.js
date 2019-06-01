@@ -123,8 +123,7 @@ function uploadFile(){
                 prof: downloadURL,
             });
         });
+        
 
-    });
-    
+    });  
 }
-

@@ -13,6 +13,8 @@ database.ref('users/'+username).once('value', function(snapshot){
     const lastname = snapshot.child('lastname').val();
     const phone = snapshot.child('phone').val();
     const price = snapshot.child('price').val();
+    let prof = snapshot.child('prof').val();
+
     
     $('#fullname').html(firstname+ ' '+lastname);
     $('#details').append(
@@ -45,6 +47,11 @@ database.ref('users/'+username).once('value', function(snapshot){
                 '<th scope="row">Price:</th>'+
                     '<td>'+price+'</td>'+
             '</tr>'+
+            '<tr>'+
+            '<th scope="row">Profile Pic:</th>' +
+                  '<td>' + '<img class="profilepic" src='+prof+"/>  <br>" + '</td>'+
+            '</tr>' +
+            
         '</table>'
     );
     $('#locationDiv').append(
