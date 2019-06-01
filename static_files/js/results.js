@@ -20,6 +20,7 @@ $(document).ready(() =>{
               const phone = childSnapshot.child('phone').val();
               const price = childSnapshot.child('price').val();
               let prof = childSnapshot.child('prof').val();
+              let port = childSnapshot.child('port').val();
               //var profilepic = document.createElement("img");
               
               if(searchName == "" && searchNear == ""){ 
@@ -34,7 +35,9 @@ $(document).ready(() =>{
                   'Availability: '+availability +'<br>'+
                   'Price: '+price+'<br>' +
                   'Profile Pic:' +
-                  '<img class="profilepic" src='+prof+"/>  <br>"
+                  '<img class="profilepic" src='+prof+"/>  <br>"+
+                  'Portfolio: ' +
+                  '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>' 
                 );
                 console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
@@ -60,7 +63,9 @@ $(document).ready(() =>{
                   'Availability: '+availability +'<br>'+
                   'Price: '+price+'<br>'+
                   'Profile Pic:' +
-                  '<img class="profilepic" src='+prof+"/>  <br>"
+                  '<img class="profilepic" src='+prof+"/>  <br>"+
+                  'Portfolio: ' +
+                  '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>'
                 );
                 console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
@@ -80,7 +85,9 @@ $(document).ready(() =>{
                     'Availability: '+availability +'<br>'+
                     'Price: '+price+'<br>'+
                     'Profile Pic:' +
-                    '<img class="profilepic" src='+prof+"/>  <br>"
+                    '<img class="profilepic" src='+prof+"/>  <br>"+
+                    'Portfolio: ' +
+                    '<button onclick=PlaySound("' + port + '\")/> Listen! </button>' +'<br>'
                   );
                   console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
@@ -105,3 +112,9 @@ $(document).ready(() =>{
       
 
 });
+
+
+function PlaySound(url) {
+  var a = new Audio(url);
+  a.play();
+}
