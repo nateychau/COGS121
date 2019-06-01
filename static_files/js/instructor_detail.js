@@ -47,7 +47,7 @@ $(document).ready(() =>{
                 if(error) {
                     console.log("Error:" +  error);
                     // write failed
-                    alert("An error occured when adding " + name + " to the database: " + error);
+                    alert("An error occured when adding " + username + " to the database: " + error);
                 }
                 else {
                     // data saved successfully
