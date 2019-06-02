@@ -126,6 +126,7 @@ $(document).ready(() =>{
     //     writeUserData(userId, firstName, lastName, email, phone, experience, about, pricing, availability);
     //   });
 
+
   });
 function snackbarActivate(text) {
 	// Fill the snackbar with the text parameter
@@ -138,3 +139,5 @@ function snackbarActivate(text) {
 	// After 3 seconds, remove the show class from DIV
 	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
+
+

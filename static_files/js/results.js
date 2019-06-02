@@ -57,23 +57,24 @@ $.getScript(scriptkey, function() {
 			if(searchName == "" && searchNear == ""){ 
 				$('#query').html('All users');
 				$('#status').append(
-				  '<div class="card">' +
-                    '<div class="card-body">'+
-                      '<a id ="'+username+'ProfLink">'+
-                        '<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
-                      '</a>'+
-                      'User ID: '+username + '<br>' +
-                      'Email: '+email+ '<br>'+
-                      'Phone: '+phone +'<br>'+
-                      'About: '+about +'<br>'+
-                      'Experience: '+experience +'<br>'+
-                      'Availability: '+availability +'<br>'+
-                      'Price: '+price+'<br>' +
-                      'Portfolio: ' +
-                      '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
-                      
+								'<div class="card">' +
+                  '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    '<div class="card-body">'+                      
+                        '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
+                        '<p class = "card-text">'+about+'</p>'+
+                        '</div>'+
+                        '<div class = "card-body">'+
+                        '<b>User ID:</b> '+username + '<br>' +
+                  		  '<b>Email:</b> '+email+ '<br>'+
+               	 	      '<b>Phone:</b> '+phone +'<br>'+
+                	      //'About: '+about +'<br>'+
+                	      '<b>Experience:</b> '+experience +'<br>'+
+                	      '<b>Availability:</b> '+availability +'<br>'+
+												'<b>Price:</b> '+price+'<br>' +
+												'Portfolio: ' +
+              	        '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
                     '</div>'+
-                    '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    
                   '</div>'
 				);
 				console.log($('#'+username+'ProfLink').html());
@@ -93,23 +94,23 @@ $.getScript(scriptkey, function() {
 					}
 					$('#status').append(
 						'<div class="card">' +
-							'<div class="card-body">'+
-
-							'<a id ="'+username+'ProfLink">'+
-								'<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
-							'</a>'+
-							'User ID: '+username + '<br>' +
-							'Email: '+email+ '<br>'+
-							'Phone: '+phone +'<br>'+
-							'About: '+about +'<br>'+
-							'Experience: '+experience +'<br>'+
-							'Availability: '+availability +'<br>'+
-							'Price: '+price+'<br>' +
+                  '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    '<div class="card-body">'+                      
+                        '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
+                        '<p class = "card-text">'+about+'</p>'+
+                        '</div>'+
+                        '<div class = "card-body">'+
+                        '<b>User ID:</b> '+username + '<br>' +
+                      '<b>Email:</b> '+email+ '<br>'+
+                      '<b>Phone:</b> '+phone +'<br>'+
+                      //'About: '+about +'<br>'+
+                      '<b>Experience:</b> '+experience +'<br>'+
+                      '<b>Availability:</b> '+availability +'<br>'+
+                      '<b>Price:</b> '+price+'<br>' +
 							'Portfolio: ' +
 							'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
 
 							'</div>'+
-							'<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
 						'</div>'
 					);
 					console.log($('#'+username+'ProfLink').html());
@@ -151,23 +152,23 @@ $.getScript(scriptkey, function() {
 						);
 						$('#status').append(
 							'<div class="card">' +
-								'<div class="card-body">'+
-								
-								'<a id ="'+username+'ProfLink">'+
-									'<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
-								'</a>'+
-								'User ID: '+username + '<br>' +
-								'Email: '+email+ '<br>'+
-								'Phone: '+phone +'<br>'+
-								'About: '+about +'<br>'+
-								'Experience: '+experience +'<br>'+
-								'Availability: '+availability +'<br>'+
-								'Price: '+price+'<br>' +
+                  '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    '<div class="card-body">'+                      
+                        '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
+                        '<p class = "card-text">'+about+'</p>'+
+                        '</div>'+
+                        '<div class = "card-body">'+
+                        '<b>User ID:</b> '+username + '<br>' +
+                      '<b>Email:</b> '+email+ '<br>'+
+                      '<b>Phone:</b> '+phone +'<br>'+
+                      //'About: '+about +'<br>'+
+                      '<b>Experience:</b> '+experience +'<br>'+
+                      '<b>Availability:</b> '+availability +'<br>'+
+                      '<b>Price:</b> '+price+'<br>' +
 								'Portfolio: ' +
 								'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
 
 								'</div>'+
-								'<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
 							'</div>'
 						);
 						console.log($('#'+username+'ProfLink').html());
