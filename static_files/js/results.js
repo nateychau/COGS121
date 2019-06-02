@@ -4,6 +4,8 @@ const searchName = localStorage.getItem("searchName");
 const searchNear = localStorage.getItem('searchNear').toLowerCase();
 var searchLat;
 var searchLng;
+var playtoggle;
+
 
 var scriptkey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY";
 var geocoder;
@@ -43,7 +45,9 @@ $.getScript(scriptkey, function() {
 			const phone = childSnapshot.child('phone').val();
 			const price = childSnapshot.child('price').val();
 			let prof = childSnapshot.child('prof').val();
-			const address = childSnapshot.child('address').val();
+			let port = childSnapshot.child('port').val();
+            const audioid = childSnapshot.child('audioid').val();
+			// const address = childSnapshot.child('address').val();
 			const lat = childSnapshot.child('coordinates/lat').val();
 			const lng = childSnapshot.child('coordinates/lng').val();
 			//var profilepic = document.createElement("img");
@@ -52,27 +56,30 @@ $.getScript(scriptkey, function() {
 			if(searchName == "" && searchNear == ""){ 
 				$('#query').html('All users');
 				$('#status').append(
-				'<div class="card">' +
-					'<div class="card-body">'+
-					'<a id ="'+username+'ProfLink" href="result_prof.html">'+
-						'<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
-					'</a>'+
-					'User ID: '+username + '<br>' +
-					'Email: '+email+ '<br>'+
-					'Phone: '+phone +'<br>'+
-					'About: '+about +'<br>'+
-					'Experience: '+experience +'<br>'+
-					'Availability: '+availability +'<br>'+
-					'Price: '+price+'<br>' +
-					'</div>'+
-					'<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
-				'</div>'
+				  '<div class="card">' +
+                    '<div class="card-body">'+
+                      '<a id ="'+username+'ProfLink">'+
+                        '<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
+                      '</a>'+
+                      'User ID: '+username + '<br>' +
+                      'Email: '+email+ '<br>'+
+                      'Phone: '+phone +'<br>'+
+                      'About: '+about +'<br>'+
+                      'Experience: '+experience +'<br>'+
+                      'Availability: '+availability +'<br>'+
+                      'Price: '+price+'<br>' +
+                      'Portfolio: ' +
+                      '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
+                      
+                    '</div>'+
+                    '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                  '</div>'
 				);
 				console.log($('#'+username+'ProfLink').html());
 				console.log(document.getElementById(username+'ProfLink').id);
 				$('#'+username+'ProfLink').click(()=>{
-				console.log(username +'clicked');
-				localStorage.setItem('keyName', username);
+					console.log(username +'clicked');
+					localStorage.setItem('keyName', username);
 				});
 			}
 			if(searchName != "" && searchNear == ""){
@@ -84,11 +91,25 @@ $.getScript(scriptkey, function() {
 						$('#status').empty();
 					}
 					$('#status').append(
-						// put in code from above append block
+						'<div class="card">' +
+							'<div class="card-body">'+
 
+							'<a id ="'+username+'ProfLink">'+
+								'<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
+							'</a>'+
+							'User ID: '+username + '<br>' +
+							'Email: '+email+ '<br>'+
+							'Phone: '+phone +'<br>'+
+							'About: '+about +'<br>'+
+							'Experience: '+experience +'<br>'+
+							'Availability: '+availability +'<br>'+
+							'Price: '+price+'<br>' +
+							'Portfolio: ' +
+							'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
 
-
-						
+							'</div>'+
+							'<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+						'</div>'
 					);
 					console.log($('#'+username+'ProfLink').html());
 					console.log(document.getElementById(username+'ProfLink').id);
@@ -131,11 +152,25 @@ $.getScript(scriptkey, function() {
 						}
 						else{
 							$('#status').append(
-								// put in code from above append block
+								'<div class="card">' +
+									'<div class="card-body">'+
+									
+									'<a id ="'+username+'ProfLink">'+
+										'<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
+									'</a>'+
+									'User ID: '+username + '<br>' +
+									'Email: '+email+ '<br>'+
+									'Phone: '+phone +'<br>'+
+									'About: '+about +'<br>'+
+									'Experience: '+experience +'<br>'+
+									'Availability: '+availability +'<br>'+
+									'Price: '+price+'<br>' +
+									'Portfolio: ' +
+									'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
 
-
-
-							
+									'</div>'+
+									'<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+								'</div>'
 							);
 							console.log($('#'+username+'ProfLink').html());
 							console.log(document.getElementById(username+'ProfLink').id);
@@ -162,4 +197,21 @@ $.getScript(scriptkey, function() {
 		return Math.sqrt( Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2) );
 	}
 
+	function PlaySound(audioid) {
+		console.log(audioid);
+		var audioinputstring = '"' +audioid +'\"';
+		console.log(audioinputstring);
+		var a = document.getElementById(audioid);
+		console.log(a);
+		if (a.playing) {
+			console.log( "MADE IT INTO A.PLAYING, paused");
+			a.pause();    
+
+		} else {
+			console.log("MADE IT INTO A.ELSE, playing");
+			a.play();
+		}
+		
+	};
 });
+      

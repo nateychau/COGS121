@@ -14,6 +14,8 @@ database.ref('users/'+username).once('value', function(snapshot){
     const phone = snapshot.child('phone').val();
     const price = snapshot.child('price').val();
     const prof = snapshot.child('prof').val();
+    const port = snapshot.child('port').val();
+    const audioid = snapshot.child('audioid').val();
     
     $('#fullname').html(firstname+ ' '+lastname);
     $('#details').append(
@@ -49,6 +51,10 @@ database.ref('users/'+username).once('value', function(snapshot){
             '<tr>'+
             '<th scope="row">Profile Pic:</th>' +
                   '<td>' + '<img class="profilepic" src='+prof+"/>  <br>" + '</td>'+
+            '</tr>' +
+
+            '<th scope="row">Portfolio:</th>' +
+            '<td>' + '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>' +'<br>' + '</td>'+
             '</tr>' +
         '</table>'
     );
@@ -97,3 +103,5 @@ database.ref('users/'+username).once('value', function(snapshot){
         });
     });
 });
+
+

@@ -1,4 +1,5 @@
 var selectedFile;
+var audioFile;
 const database = firebase.database();
 
 $(document).ready(() =>{
@@ -83,6 +84,11 @@ $("#profileInput").on("change", function(event){
     console.log('file input event listener reached')
 });
 
+$("#portfolioInput").on("change", function(event){
+    audioFile = event.target.files[0];
+    console.log('file input event listener reached')
+});
+
 function uploadFile(){
     var fileName = selectedFile.name;
     var storageRef = firebase.storage().ref('/ProfilePics/' + fileName);
@@ -121,6 +127,53 @@ function uploadFile(){
         const username = localStorage.getItem("keyName");
             database.ref('users/'+username).update({
                 prof: downloadURL,
+            });
+        });
+        
+
+    });  
+}
+
+
+function uploadFile2(){
+    var fileName = audioFile.name;
+    var storageRef = firebase.storage().ref('/Audio/' + fileName);
+    
+    var uploadTask = storageRef.put(audioFile);
+
+    console.log(fileName);
+    
+        // Register three observers:
+    // 1. 'state_changed' observer, called any time the state changes
+    // 2. Error observer, called on failure
+    // 3. Completion observer, called on successful completion
+    uploadTask.on('state_changed', function(snapshot){
+        // Observe state change events such as progress, pause, and resume
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+            console.log('Upload is paused');
+            break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+            console.log('Upload is running');
+            break;
+        }
+    }, function(error) {
+        // Handle unsuccessful uploads
+        console.log("UPLOAD FAILED SAD");
+        console.log(error);
+    }, function() {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        //var downloadURL = uploadTask.snapshot.downloadURL;
+        console.log('File available at', downloadURL);
+        const username = localStorage.getItem("keyName");
+            database.ref('users/'+username).update({
+                port: downloadURL,
+                audioid: username + "audio"
             });
         });
         
