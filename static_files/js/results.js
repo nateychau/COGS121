@@ -3,6 +3,10 @@ $(document).ready(() =>{
     const database = firebase.database();
     const searchName = localStorage.getItem("searchName");
     const searchNear = localStorage.getItem('searchNear');
+
+    if (searchName != "" || searchName != null) {
+      
+    }
     
     
     
@@ -20,68 +24,31 @@ $(document).ready(() =>{
               const phone = childSnapshot.child('phone').val();
               const price = childSnapshot.child('price').val();
               let prof = childSnapshot.child('prof').val();
+              const lat = childSnapshot.child('coordinates/lat').val();
+              const long = childSnapshot.child('coordinates/lat').val();
               //var profilepic = document.createElement("img");
               
               if(searchName == "" && searchNear == ""){ 
-              $('#query').html('All users');
+              $('#query').html('Search Results: All users');
               $('#status').append(
-                  // '<br> Name: <a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
-                  // 'User ID: '+username + '<br>' +
-                  // 'Email: '+email+ '<br>'+
-                  // 'Phone: '+phone +'<br>'+
-                  // 'About: '+about +'<br>'+
-                  // 'Experience: '+experience +'<br>'+
-                  // 'Availability: '+availability +'<br>'+
-                  // 'Price: '+price+'<br>' +
-                  // 'Profile Pic:' +
-                  // '<img class="profilepic" src='+prof+"/>  <br>"+
-                  // '<br></br><br></br>'+
-                  // '<table class = "table">'+
-                  //   '<thead>'+
-                  //     '<tr>'+
-                  //       '<th scope = "col"></th>'+
-                  //       '<th scope = "col"><a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a></th>'+
-                  //     '</tr>'+
-                  //   '</thead>'+
-                  //   '<tbody>'+
-                  //     '<tr>'+
-                  //       '<th scope = "row"></th>'+
-                  //       '<td><img class="profilepic" src='+prof+'/></td>'+
-                  //     '</tr>'+
-                  //     '<tr>'+
-                  //       '<th scope = "row">Email:</th>'+
-                  //       '<td>'+email+'</td>'+
-                  //     '</tr>'+
-                  //     '<tr>'+
-                  //       '<th scope = "row">Phone</th>'+
-                  //       '<td>'+phone+'</td>'+
-                  //     '</tr>'+
-                  //     '<tr>'+
-                  //       '<th scope = "row">About</th>'+
-                  //       '<td>'+about+'</td>'+
-                  //     '</tr>'+
-                  //     '<tr>'+
-                  //       '<th scope = "row">Experience</th>'+
-                  //       '<td>'+experience+'</td>'+
-                  //     '</tr>'+
-                  //     '<tr>'+
-                  //       '<th scope = "row">Availability</th>'+
-                  //       '<td>'+availability+'</td>'+
-                  //     '</tr>'+
-                  //     '<tr>'+
-                  //       '<th scope = "row">Price</th>'+
-                  //       '<td>'+price+'</td>'+
-                  //     '</tr>'+
-
-                  //   '</tbody>'+
-                  //   '</table>'
-
-               
-               
-               
-               
-               
-                  );
+                  '<div class="card">' +
+                  '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    '<div class="card-body">'+                      
+                        '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
+                        '<p class = "card-text">'+about+'</p>'+
+                        '</div>'+
+                        '<div class = "card-body">'+
+                        '<b>User ID:</b> '+username + '<br>' +
+                      '<b>Email:</b> '+email+ '<br>'+
+                      '<b>Phone:</b> '+phone +'<br>'+
+                      //'About: '+about +'<br>'+
+                      '<b>Experience:</b> '+experience +'<br>'+
+                      '<b>Availability:</b> '+availability +'<br>'+
+                      '<b>Price:</b> '+price+'<br>' +
+                    '</div>'+
+                    
+                  '</div>'
+                );
                 console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
                 $('#'+username+'ProfLink').click(()=>{
@@ -93,20 +60,23 @@ $(document).ready(() =>{
             if(searchName != ""){
               if(searchName == firstname){ 
                 $('#query').html(
-                  ' '+searchName
+                  'Search Results: '+searchName
                 );
                 if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
                 $('#status').html(
-                  '<br> Name: <a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
-                  'User ID: '+username + '<br>' +
-                  'Email: '+email+ '<br>'+
-                  'Phone: '+phone +'<br>'+
-                  'About: '+about +'<br>'+
-                  'Experience: '+experience +'<br>'+
-                  'Availability: '+availability +'<br>'+
-                  'Price: '+price+'<br>'+
-                  'Profile Pic:' +
-                  '<img class="profilepic" src='+prof+"/>  <br>"
+                  '<div class="card">' +
+                    '<div class="card-body">'+                      
+                        '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
+                      'User ID: '+username + '<br>' +
+                      'Email: '+email+ '<br>'+
+                      'Phone: '+phone +'<br>'+
+                      'About: '+about +'<br>'+
+                      'Experience: '+experience +'<br>'+
+                      'Availability: '+availability +'<br>'+
+                      'Price: '+price+'<br>' +
+                    '</div>'+
+                    '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                  '</div>'
                 );
                 console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
@@ -117,16 +87,19 @@ $(document).ready(() =>{
                 }
                 else{
                   $('#status').append(
-                    '<br> Name: <a id ="'+username+'ProfLink" href="result_prof.html">'+firstname+ ' '+lastname+ '</a><br>'+
-                    'User ID: '+username + '<br>' +
-                    'Email: '+email+ '<br>'+
-                    'Phone: '+phone +'<br>'+
-                    'About: '+about +'<br>'+
-                    'Experience: '+experience +'<br>'+
-                    'Availability: '+availability +'<br>'+
-                    'Price: '+price+'<br>'+
-                    'Profile Pic:' +
-                    '<img class="profilepic" src='+prof+"/>  <br>"
+                    '<div class="card">' +
+                    '<div class="card-body">'+                      
+                        '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
+                      'User ID: '+username + '<br>' +
+                      'Email: '+email+ '<br>'+
+                      'Phone: '+phone +'<br>'+
+                      'About: '+about +'<br>'+
+                      'Experience: '+experience +'<br>'+
+                      'Availability: '+availability +'<br>'+
+                      'Price: '+price+'<br>' +
+                    '</div>'+
+                    '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                  '</div>'
                   );
                   console.log($('#'+username+'ProfLink').html());
                 console.log(document.getElementById(username+'ProfLink').id);
@@ -139,7 +112,7 @@ $(document).ready(() =>{
               //console.log($('#status').html());
               if($('#status').is(':empty')){
                 $('#status').html('<br>No users found')
-                $('#query').html(searchName);
+                $('#query').html('Search Results: '+searchName);
               }
              }
             });
