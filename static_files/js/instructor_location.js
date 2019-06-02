@@ -62,7 +62,7 @@ $.getScript(scriptkey, function() {
             if (status === google.maps.GeocoderStatus.OK) {
                 console.log("Address at: " + results[0].geometry.location);
                 lat = results[0].geometry.location.lat();
-                long = results[0].geometry.location.lng();
+                lng = results[0].geometry.location.lng();
                 marker.setPosition(results[0].geometry.location);
                 map.setCenter(results[0].geometry.location);
                 map.setZoom(15);
@@ -125,7 +125,7 @@ $(document).ready( function() {
         else {
             database.ref('users/'+name).update({
                 address: address,
-                coordinates: {lat, long},
+                coordinates: {lat, lng},
 			}, (error)=> {
                 if(error) {
                     console.log("Error:" +  error);
