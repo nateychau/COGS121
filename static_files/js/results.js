@@ -65,17 +65,21 @@ $(document).ready(() =>{
                 if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
                 $('#status').html(
                   '<div class="card">' +
+                  '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
                     '<div class="card-body">'+                      
                         '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
-                      'User ID: '+username + '<br>' +
-                      'Email: '+email+ '<br>'+
-                      'Phone: '+phone +'<br>'+
-                      'About: '+about +'<br>'+
-                      'Experience: '+experience +'<br>'+
-                      'Availability: '+availability +'<br>'+
-                      'Price: '+price+'<br>' +
+                        '<p class = "card-text">'+about+'</p>'+
+                        '</div>'+
+                        '<div class = "card-body">'+
+                        '<b>User ID:</b> '+username + '<br>' +
+                      '<b>Email:</b> '+email+ '<br>'+
+                      '<b>Phone:</b> '+phone +'<br>'+
+                      //'About: '+about +'<br>'+
+                      '<b>Experience:</b> '+experience +'<br>'+
+                      '<b>Availability:</b> '+availability +'<br>'+
+                      '<b>Price:</b> '+price+'<br>' +
                     '</div>'+
-                    '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    
                   '</div>'
                 );
                 console.log($('#'+username+'ProfLink').html());
@@ -88,17 +92,21 @@ $(document).ready(() =>{
                 else{
                   $('#status').append(
                     '<div class="card">' +
+                  '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
                     '<div class="card-body">'+                      
                         '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
-                      'User ID: '+username + '<br>' +
-                      'Email: '+email+ '<br>'+
-                      'Phone: '+phone +'<br>'+
-                      'About: '+about +'<br>'+
-                      'Experience: '+experience +'<br>'+
-                      'Availability: '+availability +'<br>'+
-                      'Price: '+price+'<br>' +
+                        '<p class = "card-text">'+about+'</p>'+
+                        '</div>'+
+                        '<div class = "card-body">'+
+                        '<b>User ID:</b> '+username + '<br>' +
+                      '<b>Email:</b> '+email+ '<br>'+
+                      '<b>Phone:</b> '+phone +'<br>'+
+                      //'About: '+about +'<br>'+
+                      '<b>Experience:</b> '+experience +'<br>'+
+                      '<b>Availability:</b> '+availability +'<br>'+
+                      '<b>Price:</b> '+price+'<br>' +
                     '</div>'+
-                    '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    
                   '</div>'
                   );
                   console.log($('#'+username+'ProfLink').html());
