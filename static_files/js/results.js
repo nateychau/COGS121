@@ -55,7 +55,7 @@ $.getScript(scriptkey, function() {
 
 
 			if(searchName == "" && searchNear == ""){ 
-				$('#query').html('All users');
+				$('#query').html('Search Results: All users');
 				$('#status').append(
 								'<div class="card">' +
                   '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
@@ -71,7 +71,7 @@ $.getScript(scriptkey, function() {
                 	      '<b>Experience:</b> '+experience +'<br>'+
                 	      '<b>Availability:</b> '+availability +'<br>'+
 												'<b>Price:</b> '+price+'<br>' +
-												'Portfolio: ' +
+												'<b>Portfolio</b>: ' +
               	        '<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
                     '</div>'+
                     
@@ -87,7 +87,7 @@ $.getScript(scriptkey, function() {
 			if(searchName != "" && searchNear == ""){
 				if(searchName == firstname){ 
 					$('#query').html(
-						' '+searchName
+						'Search Results: '+searchName
 					);
 					if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
 						$('#status').empty();
@@ -101,14 +101,14 @@ $.getScript(scriptkey, function() {
                         '</div>'+
                         '<div class = "card-body">'+
                         '<b>User ID:</b> '+username + '<br>' +
-                      '<b>Email:</b> '+email+ '<br>'+
-                      '<b>Phone:</b> '+phone +'<br>'+
-                      //'About: '+about +'<br>'+
-                      '<b>Experience:</b> '+experience +'<br>'+
-                      '<b>Availability:</b> '+availability +'<br>'+
-                      '<b>Price:</b> '+price+'<br>' +
-							'Portfolio: ' +
-							'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
+												'<b>Email:</b> '+email+ '<br>'+
+												'<b>Phone:</b> '+phone +'<br>'+
+												//'About: '+about +'<br>'+
+												'<b>Experience:</b> '+experience +'<br>'+
+												'<b>Availability:</b> '+availability +'<br>'+
+												'<b>Price:</b> '+price+'<br>' +
+												'<b>Portfolio:</b> ' +
+												'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
 
 							'</div>'+
 						'</div>'
@@ -123,7 +123,7 @@ $.getScript(scriptkey, function() {
 				//console.log($('#status').html());
 				if($('#status').is(':empty')){
 					$('#status').html('<br>No users found')
-					$('#query').html(searchName);
+					$('#query').html('Search Results: '+searchName);
 				}
 			}
 			else if(searchNear != "" && searchName == ""){
@@ -148,7 +148,7 @@ $.getScript(scriptkey, function() {
 					if(distance <= DISTANCETHRESHOLD){
 						console.log("within distance threshold");
 						$('#query').html(
-							' '+searchNear
+							'Search Results: '+searchNear
 						);
 						$('#status').append(
 							'<div class="card">' +
@@ -159,14 +159,14 @@ $.getScript(scriptkey, function() {
                         '</div>'+
                         '<div class = "card-body">'+
                         '<b>User ID:</b> '+username + '<br>' +
-                      '<b>Email:</b> '+email+ '<br>'+
-                      '<b>Phone:</b> '+phone +'<br>'+
-                      //'About: '+about +'<br>'+
-                      '<b>Experience:</b> '+experience +'<br>'+
-                      '<b>Availability:</b> '+availability +'<br>'+
-                      '<b>Price:</b> '+price+'<br>' +
-								'Portfolio: ' +
-								'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
+												'<b>Email:</b> '+email+ '<br>'+
+												'<b>Phone:</b> '+phone +'<br>'+
+												//'About: '+about +'<br>'+
+												'<b>Experience:</b> '+experience +'<br>'+
+												'<b>Availability:</b> '+availability +'<br>'+
+												'<b>Price:</b> '+price+'<br>' +
+												'<b>Portfolio:</b> ' +
+												'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
 
 								'</div>'+
 							'</div>'
@@ -181,7 +181,7 @@ $.getScript(scriptkey, function() {
 					//console.log($('#status').html());
 					if($('#status').is(':empty')){
 						$('#status').html('<br>No users found')
-						$('#query').html(searchName);
+						$('#query').html('Search Results: '+searchName);
 					}
 				});	// end geocoder braces (here cuz needs to be distance)
 			}
