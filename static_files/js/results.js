@@ -5,6 +5,7 @@ const searchNear = localStorage.getItem('searchNear').toLowerCase();
 var searchLat;
 var searchLng;
 var playtoggle;
+const DISTANCETHRESHOLD = 0.5; // in terms of lat-long,
 
 
 var scriptkey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY";
@@ -143,42 +144,38 @@ $.getScript(scriptkey, function() {
 					}
 					console.log("Distance Checked: " + distance);
 					// Check distance
-					if(distance <= 0.5){ 
+					if(distance <= DISTANCETHRESHOLD){
+						console.log("within distance threshold");
 						$('#query').html(
 							' '+searchNear
 						);
-						if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
-							$('#status').empty();
-						}
-						else{
-							$('#status').append(
-								'<div class="card">' +
-									'<div class="card-body">'+
-									
-									'<a id ="'+username+'ProfLink">'+
-										'<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
-									'</a>'+
-									'User ID: '+username + '<br>' +
-									'Email: '+email+ '<br>'+
-									'Phone: '+phone +'<br>'+
-									'About: '+about +'<br>'+
-									'Experience: '+experience +'<br>'+
-									'Availability: '+availability +'<br>'+
-									'Price: '+price+'<br>' +
-									'Portfolio: ' +
-									'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
+						$('#status').append(
+							'<div class="card">' +
+								'<div class="card-body">'+
+								
+								'<a id ="'+username+'ProfLink">'+
+									'<h5 class="card-title text-centered">'+firstname+' '+lastname+'</h5>'+
+								'</a>'+
+								'User ID: '+username + '<br>' +
+								'Email: '+email+ '<br>'+
+								'Phone: '+phone +'<br>'+
+								'About: '+about +'<br>'+
+								'Experience: '+experience +'<br>'+
+								'Availability: '+availability +'<br>'+
+								'Price: '+price+'<br>' +
+								'Portfolio: ' +
+								'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
 
-									'</div>'+
-									'<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
-								'</div>'
-							);
-							console.log($('#'+username+'ProfLink').html());
-							console.log(document.getElementById(username+'ProfLink').id);
-							$('#'+username+'ProfLink').click(()=>{
-								console.log(username +'clicked');
-								localStorage.setItem('keyName', username);
-							});
-						}
+								'</div>'+
+								'<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+							'</div>'
+						);
+						console.log($('#'+username+'ProfLink').html());
+						console.log(document.getElementById(username+'ProfLink').id);
+						$('#'+username+'ProfLink').click(()=>{
+							console.log(username +'clicked');
+							localStorage.setItem('keyName', username);
+						});
 					}
 					//console.log($('#status').html());
 					if($('#status').is(':empty')){
@@ -197,21 +194,21 @@ $.getScript(scriptkey, function() {
 		return Math.sqrt( Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2) );
 	}
 
-	function PlaySound(audioid) {
-		console.log(audioid);
-		var audioinputstring = '"' +audioid +'\"';
-		console.log(audioinputstring);
-		var a = document.getElementById(audioid);
-		console.log(a);
-		if (a.playing) {
-			console.log( "MADE IT INTO A.PLAYING, paused");
-			a.pause();    
+	// function PlaySound(audioid) {
+	// 	console.log(audioid);
+	// 	var audioinputstring = '"' +audioid +'\"';
+	// 	console.log(audioinputstring);
+	// 	var a = document.getElementById(audioid);
+	// 	console.log(a);
+	// 	if (a.playing) {
+	// 		console.log( "MADE IT INTO A.PLAYING, paused");
+	// 		a.pause();    
 
-		} else {
-			console.log("MADE IT INTO A.ELSE, playing");
-			a.play();
-		}
+	// 	} else {
+	// 		console.log("MADE IT INTO A.ELSE, playing");
+	// 		a.play();
+	// 	}
 		
-	};
+	// };
 });
       
