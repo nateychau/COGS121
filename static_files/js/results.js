@@ -54,7 +54,7 @@ $.getScript(scriptkey, function() {
 			//var profilepic = document.createElement("img");
 
 
-			if(searchName == "" && searchNear == ""){ 
+			if((searchName == "" || searchName == null) && (searchNear == "" || searchNear == null)){
 				$('#query').html('Search Results: All users');
 				$('#status').append(
 								'<div class="card">' +
@@ -84,8 +84,8 @@ $.getScript(scriptkey, function() {
 					localStorage.setItem('keyName', username);
 				});
 			}
-			if(searchName != "" && searchNear == ""){
-				if(searchName == firstname){ 
+			else if(searchName != "" && searchNear == ""){
+				if(searchName == firstname || searchName == lastname){ 
 					$('#query').html(
 						'Search Results: '+searchName
 					);
@@ -126,7 +126,7 @@ $.getScript(scriptkey, function() {
 					$('#query').html('Search Results: '+searchName);
 				}
 			}
-			else if(searchNear != "" && searchName == ""){
+			else if((searchNear != "" || searchNear != null) && searchName == ""){
 				// Find distances
 				var distance;
 				geocoder= new google.maps.Geocoder();
@@ -150,6 +150,9 @@ $.getScript(scriptkey, function() {
 						$('#query').html(
 							'Search Results: '+searchNear
 						);
+						if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
+							$('#status').empty();
+						}
 						$('#status').append(
 							'<div class="card">' +
                   '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
@@ -186,7 +189,66 @@ $.getScript(scriptkey, function() {
 				});	// end geocoder braces (here cuz needs to be distance)
 			}
 			else {
+				// Find distances
+				var distance;
+				geocoder= new google.maps.Geocoder();
+				geocoder.geocode({'address': searchNear}, function(results, status) {
+					if (status === google.maps.GeocoderStatus.OK) {
+						searchLat = results[0].geometry.location.lat();
+						searchLng = results[0].geometry.location.lng();
+						distance = calculateDistance(searchLat, searchLng, lat, lng);
+						console.log("searchLat: " + searchLat);
+						console.log("searchLng: " + searchLng);
+						console.log("lat: " + lat);
+						console.log("ln: " + lng);
+						console.log("Distance: " + distance);
+					} else {
+						window.alert('Geocoder failed due to: ' + status);
+					}
+					console.log("Distance Checked: " + distance);
 
+				if(distance <= DISTANCETHRESHOLD && searchName == firstname || searchName == lastname){
+						console.log("within distance threshold");
+						$('#query').html(
+							'Search Results: '+searchName+" near "+searchNear
+						);
+						if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
+							$('#status').empty();
+						}
+						$('#status').append(
+							'<div class="card">' +
+                  '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
+                    '<div class="card-body">'+                      
+                        '<h5 class="card-title text-centered">'+'<a id ="'+username+'ProfLink" href = result_prof.html>'+firstname+' '+lastname+'</a></h5>'+                   
+                        '<p class = "card-text">'+about+'</p>'+
+                        '</div>'+
+                        '<div class = "card-body">'+
+                        '<b>User ID:</b> '+username + '<br>' +
+												'<b>Email:</b> '+email+ '<br>'+
+												'<b>Phone:</b> '+phone +'<br>'+
+												//'About: '+about +'<br>'+
+												'<b>Experience:</b> '+experience +'<br>'+
+												'<b>Availability:</b> '+availability +'<br>'+
+												'<b>Price:</b> '+price+'<br>' +
+												'<b>Portfolio:</b> ' +
+												'<audio id= "' + audioid + '\" src=' + port +'" controls></audio>'+ '<br>'+
+
+								'</div>'+
+							'</div>'
+						);
+						console.log($('#'+username+'ProfLink').html());
+						console.log(document.getElementById(username+'ProfLink').id);
+						$('#'+username+'ProfLink').click(()=>{
+							console.log(username +'clicked');
+							localStorage.setItem('keyName', username);
+						});
+					}
+					//console.log($('#status').html());
+					if($('#status').is(':empty')){
+						$('#status').html('<br>No users found')
+						$('#query').html('Search Results: '+searchName);
+					}
+				});	// end geocoder braces (here cuz needs to be distance)
 			}
 		});
 	});

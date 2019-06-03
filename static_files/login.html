@@ -7,7 +7,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/login.css" rel= "stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -17,6 +16,7 @@
     <!-- jQuery (necessary for Bootstrap's Javascript plugins) -->
     <script src="js/bootstrap.min.js" def></script>
     <script src="js/login.js" defer></script>
+
     <title>Log in</title>
     <script src ='https://www.gstatic.com/firebasejs/5.0.2/firebase.js'></script>
     <script>
@@ -69,13 +69,18 @@ firebase.initializeApp(firebaseConfig);
             <form class = "login-form">
               <input type="text" id="login-username" placeholder="Username" required>
               <input type="passwowrd" id="login-password" placeholder ="Password" required>
-              <input type="submit" value="login" id="login-button" onclick="return check()">
+              <input type="submit" value="login" id="login-button">
 
             </form>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Status Confirmation Snackbar -->
+    <div id="snackbar" class=""></div>
+
+
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
