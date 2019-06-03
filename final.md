@@ -9,8 +9,12 @@ Jonathan Fong
 -Many UI updates throughout the project
 
 Joseph Wang
-
-write about stuff that you did
+-storyboarding
+-structuring HTML pages, links, and workflow
+-updated index.html, index.js, instructor_detail.html, instructor_detail.js, instructor_prof.js, result_prof.js, results.js
+-implemented audio insertion, fetch, rendering and display into firebase
+-implemented media/image insertion, fetch, rendering, and display into firebase 
+-various UI updates throughout the quarter
 
 Nathan Chau
 
