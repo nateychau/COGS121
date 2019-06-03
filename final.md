@@ -26,14 +26,14 @@ Javascript:
 -result.js
 
 HTML
--Google_Maps_API.html
--index.html
--instructor_detail.html
--instructor_location.html
--instructor_prof.html
--instructor_start.html
--login.html
--result_prof.html
+-Google_Maps_API.html  
+-index.html  
+-instructor_detail.html  
+-instructor_location.html  
+-instructor_prof.html  
+-instructor_start.html  
+-login.html  
+-result_prof.html  
 -results.html
 
 
@@ -42,4 +42,4 @@ CREATE SINGLE GOOGLE SLIDE
 
 
 Demo Video:
-https://drive.google.com/file/d/1t7na0UjI12oteJKUM6crZ5oR8VwDfoo0/view?usp=sharing
+https://www.youtube.com/watch?v=tAXO2eeNFt4
