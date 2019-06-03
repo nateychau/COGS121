@@ -15,8 +15,8 @@ Nathan Chau
 -Added inserting, fetching, and rendering functionality for firebase text data (insert through sign-up pages, fetch and rendering on result.html and result_prof.html)  
 -Made minor UI updates throughout the quarter
 
-Source Code Files: ADD A DESCRIPTION FOR EACH FILE
-Javascript:
+Source Code Files: ADD A DESCRIPTION FOR EACH FILE  
+Javascript:  
 -server.js  
 -index.js  
 -instructor_location.js  
