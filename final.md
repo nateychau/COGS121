@@ -38,7 +38,7 @@ HTML
 
 
 Google Slide:
-CREATE SINGLE GOOGLE SLIDE
+https://docs.google.com/presentation/d/19qkqr9KgLgoOT-4hVIg-7JmEIejg93v5AoVEwmE4_N4/edit?usp=sharing
 
 
 Demo Video:
