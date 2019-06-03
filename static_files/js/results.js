@@ -15,7 +15,7 @@
 
 //result.html scripts
 const database = firebase.database();
-const searchName = localStorage.getItem("searchName");
+const searchName = localStorage.getItem("searchName").toUpperCase();
 const searchNear = localStorage.getItem('searchNear').toLowerCase();
 var searchLat;
 var searchLng;
@@ -56,8 +56,8 @@ $.getScript(scriptkey, function() {
 			const availability = childSnapshot.child('availability').val();
 			const email = childSnapshot.child('email').val();
 			const experience = childSnapshot.child('experience').val();
-			const firstname = childSnapshot.child('firstname').val();
-			const lastname = childSnapshot.child('lastname').val();
+			const firstname = childSnapshot.child('firstname').val().toUpperCase();
+			const lastname = childSnapshot.child('lastname').val().toUpperCase();
 			const phone = childSnapshot.child('phone').val();
 			const price = childSnapshot.child('price').val();
 			let prof = childSnapshot.child('prof').val();
@@ -99,7 +99,7 @@ $.getScript(scriptkey, function() {
 					localStorage.setItem('keyName', username);
 				});
 			}
-			else if(searchName != "" && searchNear == ""){
+			else if((searchName != "" || searchName != null) && (searchNear == "" || searchNear == null)){
 				if(searchName == firstname || searchName == lastname){ 
 					$('#query').html(
 						'Search Results: '+searchName
