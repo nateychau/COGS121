@@ -47,9 +47,9 @@ firebase.initializeApp(firebaseConfig);
                       <a class="nav-link" href="login.html">Log in</a>
                     </li>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0" action = "results.html">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  <form class="form-inline my-2 my-lg-0" onsubmit="return false">
+                    <input id="searchbarInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                   </form>
                 </div>
               </nav>
@@ -86,6 +86,7 @@ firebase.initializeApp(firebaseConfig);
 
     <!-- Custom JS -->
     <script src="./js/instructor_start.js"></script>
+    <script src = "./js/navbar_search.js"></script>
 
 </body>
 </html>
