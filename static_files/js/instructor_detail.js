@@ -1,3 +1,11 @@
+// Continues with the instructor-sign up process, with additional information relating more to the
+// work involving with the lesson, such as experience, price, availability, as well as a profile
+// picture and sample of the instructor's playing as an audio clip upload. It also performs
+// missing error checking, although profile picture and audio clips are not mandatory. 
+// The functions uploadFile and uploadFile2 are used to upload the picture and audio clip to the 
+// database. These functions utilize firebase.storage instead of realtime database to store these 
+// files. The user will also receive a snackbar notification of progress and completion during file upload.
+
 var selectedFile;
 var audioFile;
 const database = firebase.database();
@@ -65,28 +73,24 @@ $(document).ready(() =>{
 
 });
 
-function verify() {
-    var original = $("#passwordInput").val();
-    var check = $("#passwordVerifyInput").val();
-    if (original != check) {
-        $('#passwordVerifyInput').addClass("invalidInput");
-        return false;
-    }
-    else {
-        $('#passwordVerifyInput').removeClass("invalidInput");
-        $('#passwordVerifyInput').css("background-color: #fff");
-        return true;
-    }
-}
-
 $("#profileInput").on("change", function(event){
-    selectedFile = event.target.files[0];
-    console.log('file input event listener reached')
+    if (event.target.files[0]) {
+        console.log('file input event listener reached');
+        selectedFile = event.target.files[0];
+        $('#uploadButton').removeAttr("disabled");
+        $('#uploadButton').attr("enabled","");
+    }
+    
 });
 
 $("#portfolioInput").on("change", function(event){
-    audioFile = event.target.files[0];
-    console.log('file input event listener reached')
+    if (event.target.files[0]) {
+        console.log('file input event listener reached');
+        audioFile = event.target.files[0];
+        $('#uploadButton2').removeAttr("disabled");
+        $('#uploadButton2').attr("enabled","");
+    }
+    
 });
 
 function uploadFile(){
@@ -96,6 +100,7 @@ function uploadFile(){
     var uploadTask = storageRef.put(selectedFile);
 
     console.log(fileName);
+    snackbarActivate1("Uploading file... Please wait: ");
     
         // Register three observers:
     // 1. 'state_changed' observer, called any time the state changes
@@ -109,11 +114,17 @@ function uploadFile(){
         switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
             console.log('Upload is paused');
+            snackbarActivate1("Upload is paused: "+progress.toFixed(2)+"%");
             break;
         case firebase.storage.TaskState.RUNNING: // or 'running'
             console.log('Upload is running');
             break;
+        case firebase.storage.TaskState.RESUME:
+            console.log('Upload is resuming');
+            snackbarActivate1("Upload resuming... ");
+            break;
         }
+        snackbarActivate1("Uploading file... Please wait: "+progress.toFixed(2)+"%");
     }, function(error) {
         // Handle unsuccessful uploads
         console.log("UPLOAD FAILED SAD");
@@ -129,7 +140,7 @@ function uploadFile(){
                 prof: downloadURL,
             });
         });
-        
+        snackbarActivateFinish("Upload complete! File has been saved and stored.");
 
     });  
 }
@@ -155,11 +166,17 @@ function uploadFile2(){
         switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
             console.log('Upload is paused');
+            snackbarActivate1("Upload is paused: "+progress.toFixed(2)+"%");
             break;
         case firebase.storage.TaskState.RUNNING: // or 'running'
             console.log('Upload is running');
             break;
+        case firebase.storage.TaskState.RESUME:
+            console.log('Upload is resuming');
+            snackbarActivate1("Upload resuming... ");
+            break;
         }
+        snackbarActivate1("Uploading file... Please wait: "+progress.toFixed(2)+"%");
     }, function(error) {
         // Handle unsuccessful uploads
         console.log("UPLOAD FAILED SAD");
@@ -176,7 +193,32 @@ function uploadFile2(){
                 audioid: username + "audio"
             });
         });
+        snackbarActivateFinish("Upload complete! File has been saved and stored.");
         
 
-    });  
+    }); 
+}
+// snackbar function
+function snackbarActivate1(text) {
+    // Fill the snackbar with the text parameter
+    $('#snackbar').text(text);
+
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+    // Add the "show" class to DIV
+    x.className = "show";
+}
+function snackbarActivateFinish(text) {
+    // Fill the snackbar with the text parameter
+    $('#snackbar').text(text);
+
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+    // Add the "show" class to DIV
+    x.className = "hide";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ 
+        x.className = x.className.replace("hide", "");
+    }, 3000);
 }
