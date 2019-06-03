@@ -1,3 +1,18 @@
+// Takes a snapshot of all instructors of the database, and displays the data needed. 
+// Does error checking and filtering of instructors dependent on search terms (name and/or location).
+// Utilizes Google Maps API to get the location of the address if an address query was
+// entered. Also has html5 geolocation, but no implementation has been done for it.
+// Takes a snapshot of entire database's instructors. Then appends the instructor according
+// to the search terms provided (if searching by name, locatation, or both). If the instr
+// has been appended, also adds a function that will save the keyname to the instructor
+// for results_prof. Checks first if no search terms, then a name search query, then location, 
+// then both. If a name search is found, it will check if the name is matching, then append the instr.
+// If the div had been empty before, empty the div before appending the instr. If a location
+// search is found, it will use the Google Maps Geocoder to find the location of the search query,
+// then if the distance between that and the instructor's location is found to be within the 
+// distance threshold (Its small b/c latitude/longitude sizes are big, maybe about 30 miles or so, 
+// but it varies), it will append the instructor.
+
 //result.html scripts
 const database = firebase.database();
 const searchName = localStorage.getItem("searchName");
@@ -89,9 +104,11 @@ $.getScript(scriptkey, function() {
 					$('#query').html(
 						'Search Results: '+searchName
 					);
+					// If the div has been empty before this specific user, empty the div before appending
 					if($('#status').is(':empty') || $('#status').html() == '<br>No users found'){
 						$('#status').empty();
 					}
+					// add the user's data
 					$('#status').append(
 						'<div class="card">' +
                   '<img class="card-img-bottom profilepic" alt="Profile Picture" src='+prof+'/>' +
@@ -121,12 +138,13 @@ $.getScript(scriptkey, function() {
 					});
 				}
 				//console.log($('#status').html());
+				// If the user was not appended, add the no users found description.
 				if($('#status').is(':empty')){
 					$('#status').html('<br>No users found')
 					$('#query').html('Search Results: '+searchName);
 				}
 			}
-			else if((searchNear != "" || searchNear != null) && searchName == ""){
+			else if((searchNear != "" || searchNear != null) && (searchName == "" || searchName == null)){
 				// Find distances
 				var distance;
 				geocoder= new google.maps.Geocoder();

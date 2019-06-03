@@ -1,8 +1,11 @@
+// Redirects the user to homepage after displaying snackbar message that they've been logged in. 
+// When the login-button has been clicked, will show the snackbar to the user and redirect after 3
+// seconds.
+
 $(document).ready(function() {
     $('#login-button').click(function(event) {
         event.preventDefault();
         snackbarActivate("You have been logged in. Redirecting to homepage...");
-        // window.location = "index.html"; // Go to homepage
     });
 
 
@@ -22,12 +25,12 @@ $(document).ready(function() {
     }
 
     // Custom function to make the computer wait...
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > milliseconds){
-                break;
-            }
-        }
-    }
+    // function sleep(milliseconds) {
+    //     var start = new Date().getTime();
+    //     for (var i = 0; i < 1e7; i++) {
+    //         if ((new Date().getTime() - start) > milliseconds){
+    //             break;
+    //         }
+    //     }
+    // }
 });

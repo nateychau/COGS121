@@ -1,3 +1,13 @@
+// Used when inputting addresses in during sign up process. Utilizes Google Maps API to display a map 
+// and create a marker once address has been inputted. First gets the script with the api, then
+// initializes the map using html5 geolocation to get the current location of the user (if supported).
+// If the add address button is clicked, the function uses Geocoder to find the address location, 
+// adds it to the map as a google maps marker, and zooms in to the location. If no address was submitted, add the invalid class to the data field,
+// otherwise, enable the submit button and scroll to the submit button on the page. Once the submit
+// button was pressed, it gets the address, saves it to database, and redirects to the end of 
+// instructor sign up.
+
+
 var scriptkey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWsb3UJbBCnDwp2vM8cYsEKfBG2jtvyoY";
 
 // Google Maps API global variables
@@ -97,6 +107,7 @@ $.getScript(scriptkey, function() {
 
 });
 
+// Preloader
 var ready = false;
 if (!ready) {
 	loading();
@@ -113,6 +124,7 @@ $(document).ready( function() {
     ready = true;
     console.log('loaded!');
 
+    
     $('#AddressSubmit').click(()=>{
         // get session name
         const name = localStorage.getItem("keyName");
@@ -144,7 +156,7 @@ $(document).ready( function() {
 
 });
 
-// Custom function to make the computer wait...
+// Custom function to make the computer wait... (used in testing)
 function sleep(milliseconds) {
     var start = new Date().getTime();
     for (var i = 0; i < 1e7; i++) {

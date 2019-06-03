@@ -1,7 +1,15 @@
+// implements homepage functionality for site, including preparing search queries for results.
+// For any descriptions that have "(testing)" on them, they were only used for testing and not
+// the actual functionality of the page. This page includes a function to save the search terms
+// to localStorage to be used by results.js, as well as functions to perform certain commands
+// once a button is clicked.
+
+
+
 $(document).ready(() =>{
     const database = firebase.database();
 
-    //Add new user
+    //Add new user (testing)
     function writeUserData(username, firstname, lastname, email, phone, experience, about, price, availability,address, coordinates,prof,port,audioid) {
       firebase.database().ref('users/' + username).set({
         firstname: firstname,
@@ -21,7 +29,7 @@ $(document).ready(() =>{
     }
 
 
-    //Delete user
+    //Delete user (testing)
     function deleteUser(username){
       firebase.database().ref('users/'+ username).remove();
     }
@@ -48,7 +56,7 @@ $(document).ready(() =>{
 
   //index.html scripts
 
-    //reset database
+    //reset database (testing)
     $('#resetButton').click(()=>{
       console.log('Resetting database');
      
@@ -106,28 +114,9 @@ $(document).ready(() =>{
       location.href = 'results.html';
     });
 
-
-
-
-
-//instructor_start.html scripts
-
-    //add new user
-    // $('#instructorSubmit').click(()=>{
-    //     const firstName = $('#firstNameInput').val()
-    //     const lastName = $('#lastNameInput').val()
-    //     const email = $('#emailInput').val()
-    //     const phone = $('#phoneInput').val()
-    //     const experience = $('#experienceInput').val()
-    //     const about = $('#aboutInput').val()
-    //     const pricing = $('#priceInput').val()
-    //     const availability =  $('#availabilityInput').val()
-    //     const userId = firstName.substring(0,1).toLowerCase()+lastName
-    //     writeUserData(userId, firstName, lastName, email, phone, experience, about, pricing, availability);
-    //   });
-
-
   });
+
+  // NOT USED
 function snackbarActivate(text) {
 	// Fill the snackbar with the text parameter
 	$('#snackbar').text(text);

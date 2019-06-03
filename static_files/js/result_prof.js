@@ -1,3 +1,10 @@
+// Displays details of the specific instructor fetched from database when the instructor 
+// is clicked on from results page after search. Also shows the address and map of the 
+// lesson location. First gets a snapshot of the specific instructor, and appends html 
+// to the page to display the data in an orderly fashion. Also, initializes a map with 
+// Google Maps API with the location of the lesson. Omits some data that would otherwise
+// be show in instructor_prof.
+
 const database = firebase.database();
 const username = localStorage.getItem("keyName");
 
@@ -20,10 +27,6 @@ database.ref('users/'+username).once('value', function(snapshot){
     $('#fullname').html(firstname+ ' '+lastname);
     $('#details').append(
         '<table class="table" style="margin:0">'+
-            '<tr>'+
-                '<th scope="row">User ID:</th>'+
-                    '<td>'+username+'</td>'+
-            '</tr>'+
             '<tr>'+
                 '<th scope="row">Email:</th>'+
                     '<td>'+email+'</td>'+

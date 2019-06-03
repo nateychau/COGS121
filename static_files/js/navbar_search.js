@@ -1,3 +1,6 @@
+// Takes the searchbar in navbar input and redirects to results.js while saving the required term.
+// Used in the navbar on all pages.
+
 $(document).ready(() =>{
 
     $('#searchbar').click(()=>{

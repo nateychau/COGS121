@@ -1,3 +1,9 @@
+// Displays the profile of the instructor. Fetches all data from firebase related to 
+// the instructor profile and displays a map of the lesson location. First gets a snapshot
+// of the specific instructor, and appends html to the page to display the data in an 
+// orderly fashion. Also, initializes a map with Google Maps API with the location
+// of the lesson.
+
 const database = firebase.database();
 const username = localStorage.getItem("keyName");
 

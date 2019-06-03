@@ -1,7 +1,16 @@
+// Takes in input from input boxes, checks for validity (if missing values) as well as 
+// equivalent passwords, and goes to next step of instructor sign-up process. When the submit
+// button is pressed, the function gets all data fields from the input boxes, checks if they're
+// valid or not (i.e. empty). It then also checks if the username is unique in the database, and
+// checks for a valid password (if passwords are identical). If any inputs are invalid, an
+// invalid class will be added to the element which adds a red background to the input field to
+// indicate its missing. Once error checking is done, the data will be added into the database,
+// and a keyname will be saved to localStorage to maintain data across the signup process
+
 $(document).ready(() =>{
     const database = firebase.database();
 
-    //instructor_start.html scripts
+    //when submit button is pressed
     $('#instructorStartSubmit').click(()=>{
         const ref = database.ref();
         ref.once('value', function(snapshot){

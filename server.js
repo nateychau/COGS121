@@ -1,3 +1,5 @@
+// server.js hosts the server
+
 const express = require('express');
 const app = express();
 
