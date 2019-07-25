@@ -8,7 +8,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Roboto Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
     <title>Instructor Profile</title>
+    <script src ='https://www.gstatic.com/firebasejs/5.0.2/firebase.js'></script>
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyBEWM30zYSTgag6ZnD02X7D4hXHcbhNtKA",
+  authDomain: "cogs121-4f067.firebaseapp.com",
+  databaseURL: "https://cogs121-4f067.firebaseio.com",
+  projectId: "cogs121-4f067",
+  storageBucket: "cogs121-4f067.appspot.com",
+  messagingSenderId: "1020553409574",
+  appId: "1:1020553409574:web:41f68203fa4f06d9"
+};
+firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,27 +38,60 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="instructor_start.html">Instructors</a>
+                      <a class="nav-link" href="instructor_start.html">Sign Up</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="login.html">Log in</a>
                     </li>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0" action = "results.html">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  <form class="form-inline my-2 my-lg-0" onsubmit="return false">
+                    <input id="searchbarInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                   </form>
                 </div>
               </nav>
-    <a href="index.html">Key</a>
-    <a href="instructor_start.html">Instructors</a>
-    <h1>Instructor Profile</h1>
-    <a href="instructor_detail.html">Edit</a>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <h1>My Profile</h1>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-10 justify-content-center text-center text-uppercase bg-light border rounded-top">
+            <h2 id="fullname"></h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-5 justify-content-center text-center bg-light border ">
+            <div id="details"></div>
+            <div class="row justify-content-center">
+              <a style="font-size: 1.1rem;" href="instructor_detail.html">Edit Profile Details</a>
+            </div>
+          </div>
+          <div class="col-5 justify-content-center text-center bg-light border rounded-bottom">
+            <div style="font-size: 1.1rem" id='locationDiv'></div>
+            <div id='mapProf'></div>
+            <div class="row justify-content-center">
+              <a style="margin-top: 1rem; font-size: 1.1rem" href="Google_Maps_API.html">Edit Address</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src= "jquery-3.4.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+    
+    <script src = "./js/instructor_prof.js"></script>
+    <script src = "./js/navbar_search.js"></script>
+
 </body>
 </html>

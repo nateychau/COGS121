@@ -8,15 +8,26 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Roboto Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
     <title>Key</title>
-          <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/6.0.2/firebase-app.js"></script>
+    <script src ='https://www.gstatic.com/firebasejs/5.0.2/firebase.js'></script>
+    <script>
+      const firebaseConfig = {
+  apiKey: "AIzaSyBEWM30zYSTgag6ZnD02X7D4hXHcbhNtKA",
+  authDomain: "cogs121-4f067.firebaseapp.com",
+  databaseURL: "https://cogs121-4f067.firebaseio.com",
+  projectId: "cogs121-4f067",
+  storageBucket: "cogs121-4f067.appspot.com",
+  messagingSenderId: "1020553409574",
+  appId: "1:1020553409574:web:41f68203fa4f06d9"
+};
+firebase.initializeApp(firebaseConfig);
+    </script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#reserved-urls -->
-
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
        <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -25,37 +36,21 @@
     
 
     <script src= "jquery-3.4.0.js"></script>
-    <script type = "text/javascript">
-    
-    $(document).ready(() =>{
-      const database = firebase.database();
+    <script src = "./js/index.js" defer></script>
+    <script src = "./js/navbar_search.js"></script>
 
-      database.ref('users/').remove();
-
-      
-
-
-
-        $('#homeSearch').click(() =>{
-          console.log('helllooooooooooooooooooooo');
-          $.ajax({
-            url: 'users/',
-            type: 'GET',
-            dataType: 'json',
-            success: (data) =>{
-              console.log('ajax success!', data);
-              $('#status').html('All users' + data);
-            }
-          
-
-          });
-
-        });
-    });
-    
-    </script>
+    <style>
+      .navbar {
+ background-image: url(https://firebasestorage.googleapis.com/v0/b/cogs121-4f067.appspot.com/o/piano-keyboard-clipart.jpg?alt=media&token=12f15ba8-1b01-423d-88ef-d9c6ec296838);
+ background-attachment: fixed;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+      </style>
   </head>
 <body>
+  <!--<h1>HELLO</h1>-->
   <!-- html for navbar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Key</a>
@@ -66,55 +61,54 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="instructor_start.html">Instructors</a>
+              <a class="nav-link" href="instructor_start.html">Sign Up</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.html">Log in</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0" action = "results.html">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" onsubmit="return false">
+            <input id="searchbarInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </nav>
       
-    <div class="row align-items-center">
-        <div class="col"></div>
-        <div class="col">
-            <h1 class="col align-items-center">Key (Home Page)</h1>
+    <div class="row align-items-center" align="center">
+        <!-- <div class="col"></div> -->
+        <div class="col ">
+            <h1 class="col align-items-center">Key</h1>
             <div class="search-container, col align-items-center">
             <!--<form > action="results.html"-->
               <!-- <input type="text" placeholder="Search.."> -->
-              <button id = "homeSearch" >display current users</button>
+              <!-- <button id = "homeSearch" >display current users</button> -->
             </form>
             </div>
         </div>
-        <div class="col"></div>
+        <!-- <button id="resetButton">Reset database</button> -->
+        <!-- <div class="col"></div> -->
       </div>
       <div>
           <br><br><br><br><br><br><br><br>
       </div>
       <div id = "names" class="container">
-          <div class = "col">
-            <form class="form-inline my-2 my-lg-0" action = "results.html">
-              Instructor                      
-              <input class="form-control mr-sm-2" type="search" placeholder="piano teacher" aria-label="Search">
-                <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+          <div class = "col">  
+              Instructor         
+              <input id = nameVal class="form-control mr-sm-2" type="search" placeholder="Name" aria-label="Search">
+            <!-- <button id="nameSearch" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
           </div>
           <div class ="col">
-              <form class="form-inline my-2 my-lg-0" action = "results.html">
                 Near
-                <input class="form-control mr-sm-2" type="search" placeholder="La Jolla, CA" aria-label="Search">
-                <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+                <input id = locationVal class="form-control mr-sm-2" type="search" placeholder="Location" aria-label="Search">
+                <button id="instructorSearch" class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
           </div>  
       </div>
-        
 
  <!--  <a href="results.html">Search</a> -->
       <div id="status"></div>
+
+      <!-- Status Confirmation Snackbar -->
+      <div id="snackbar" class=""></div>
 
 </body>
 </html>

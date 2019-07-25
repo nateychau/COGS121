@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Roboto Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Firebase -->
+    <script src ='https://www.gstatic.com/firebasejs/5.0.2/firebase.js'></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBEWM30zYSTgag6ZnD02X7D4hXHcbhNtKA",
+        authDomain: "cogs121-4f067.firebaseapp.com",
+        databaseURL: "https://cogs121-4f067.firebaseio.com",
+        projectId: "cogs121-4f067",
+        storageBucket: "cogs121-4f067.appspot.com",
+        messagingSenderId: "1020553409574",
+        appId: "1:1020553409574:web:41f68203fa4f06d9"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+  </head>
+  <body>
+    <!-- Preloader -->
+    <center>
+      <div class="preloader">
+        <div id="loader-container">
+          <i id="loader"></i>
+        </div>
+        <i id="loading-overlay"></i>
+      </div>
+    </center>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Key</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="instructor_start.html">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Log in</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" onsubmit="return false">
+          <input id="searchbarInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <h1>Instructor Location</h1>
+    <a href="instructor_detail.html">Previous</a>
+  
+    <div align ="center">
+      <h4>Where are you located?</h4>
+      
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <form id="AddressForm" class="form-inline my-2 my-lg-0" onsubmit="return false">
+            <form action = "instructor_prof.html">
+            <input id="AddressSearchBar" class="form-control" name="Address" type="search" placeholder="Address.." aria-label="Search Address">
+            <button id="addAddress" class="btn btn-outline-success my-2 my-sm-0" type="submit">Show Address</button>
+            </br>
+            <!-- <input type="submit" value = "Create My Profile"> -->
+          </form>
+        </div>
+        
+      </div>
+      
+
+      <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control" type="search" placeholder="Address" aria-label="Search">
+          <button id="searchbar" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+    <div id="map"></div>
+    
+    <div class="container">
+      <div class="col-4-lg col-6-md col-12-sm col-12-xs">
+        <button id="AddressSubmit" class="btn btn-outline-primary btn-lg btn-block" disabled>Submit</button>
+      </div>
+    </div>
+    
+    <hr>
+
+    </br>
+
+    <!-- Status Confirmation Snackbar -->
+    <div id="snackbar" class=""></div>
+ 
+
+    <!-- SCRIPT TAGS HERE -->
+    <script src= "jquery-3.4.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/instructor_location.js"></script>
+    <script src = "./js/navbar_search.js" defer></script>
+    
+    <script>
+      
+      /* Confirms Refresh - Used to debug */
+      // window.onbeforeunload = function(event)
+      // {
+      //     return confirm("Confirm refresh");
+      // };
+    </script>
+  </body>
+</html>

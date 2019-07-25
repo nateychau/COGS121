@@ -1,0 +1,342 @@
+body,
+html {
+	width: 100%;
+	height: 100%;
+}
+
+/* Line spacer */
+hr {
+  max-width: 50px;
+  border-width: 3px;
+  border-color: rgb(30, 32, 172);
+}
+
+/* p, ul, li {
+	font-size: 30px;
+} */
+
+a {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+.text-faded {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* LOADING... */
+#loading-overlay {
+	background-color: grey;
+	opacity: 0.4;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+}
+#loader-container {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-80px, -80px);	/* set half of width & height */
+	z-index: 3;
+}
+#loader {
+    border: 12px solid #fff;
+    border-top: 12px solid #fa5a62;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+	animation: spin 2s linear infinite;
+	position: fixed;
+	align-items: center;
+  	justify-content: center;
+	z-index: inherit;
+	opacity: 1;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* .btn-link {
+	background-color:rgb(31, 179, 18);
+	width: 100%;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	padding-left: 10%;
+	padding-right: 10%;
+} */
+
+/* .btn {
+  cursor: pointer;
+  font-weight: 700; 
+  text-transform: uppercase;
+  border: none;
+  border-radius: 300px;
+  font-family: 'Roboto', sans-serif;
+} */
+
+section {
+  padding: 5rem 0;
+}
+
+.section-heading {
+  margin-top: 0;
+}
+
+
+/* ------------------------------- snackbar -------------------------------- */
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+}
+/* Used in instructor_detail.js */
+#snackbar.hide {
+	visibility: visible; /* Hide the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* Input box when has invalid input, change background color to red */
+.invalidInput {
+	background-color: #ffdddd;
+}
+
+/* ------------------------- Google_Maps_API.html -------------------------- */
+
+#map {
+    height: 60%;
+    width: auto;
+    margin: 20px 100px 20px 100px;
+}
+@media screen and (max-height: 450px) {
+	#map {
+        height: 60%;
+        width: auto;
+        margin: 20px;
+    }
+}
+
+#AddressSubmit[disabled] {
+	background-color: #F1F1F1;
+}
+#AddressSubmit[enabled] {
+	animation: pulse 1s;
+}
+
+@keyframes pulse {
+	from { transform: scale(1); }
+  50% { transform: scale(1.10); }
+  to { transform: scale(1); }
+}
+
+/*---------------------------results.html-----------------------------------*/
+.profilepic{
+	width: 100%;
+	height:250px;
+	object-fit: cover;
+}
+/* ------------------------------------------------------------------------- */
+/* ------------------------ instructor_detail.html ------------------------- */
+#uploadButton[enabled] {
+	animation: pulse 1s;
+}
+#uploadButton2[enabled] {
+	animation: pulse 1s;
+}
+/* ------------------------------------------------------------------------- */
+/* ------------------------- instructor_prof.html -------------------------- */
+#mapProf {
+	width: 100%;
+	height: 300px;
+}
+
+
+/* FROM HERE BELOW IS CURRENTLY UNUSED STUFF I THINK */
+
+
+.masthead {
+	margin-bottom: 30px;
+	padding-bottom:5em;
+	background-color: #FFC010;
+	/* margin-top: 100px; */
+	padding-top:5em;
+}
+
+.sidebar {
+	height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0;
+	left: 0;
+	background-color: #39DB2C;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	transition: 0.3s; /* 0.3 second transition effect to slide in the sidebar */
+}
+
+.sidebar a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #f1f1f1;
+	display: block;
+	transition: 0.15s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+	color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 50px;
+	margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+	font-size: 50px;
+	cursor: pointer;
+	background-color: #00A029;
+	color: white;
+	padding: 10px 25px;
+	border: none;
+}
+
+.openbtn:hover {
+	background-color: #39DB2C;
+}
+
+#closesidebar {
+	background-color: #39DB2C;
+	width: auto;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+	transition: margin-left .3s; /* If you want a transition effect */
+	padding: 20px;
+	background: rgba(255, 192, 16, 1);
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+	.sidebar {padding-top: 15px;}
+	.sidebar a {font-size: 18px;}
+}
+
+
+.homepage-item {
+	background-color: #00A029;
+	border-radius:10px;
+	width: 100%;
+	height: 262px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: middle;
+	border: 0;
+ 	box-shadow: none;
+}
+
+.homepage-item:hover {
+	background:#39DB2C;
+}
+
+.homepage-item .homepage-item-content {
+	font-size: 60px;
+	color: #fff;
+	text-align: center;
+}
+
+#pagename {
+	animation-duration: 0.3s;
+	font-size: 50px;
+}
+
+.item-button {
+	cursor:pointer;
+	background: #FFC010;
+	width: 20%;
+	padding:20px;
+	margin:10px;
+	border: 0px;
+	box-shadow: none;
+	border-radius: 20px;
+	text-shadow: 1px 1px 2px darkgrey;
+}
+
+.item-button:hover,
+.item-button:focus {
+	background:rgb(255, 171, 16);
+}
+
+
