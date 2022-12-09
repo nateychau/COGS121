@@ -19,7 +19,7 @@
   "homepage": "https://github.com/nateychau/COGS121#readme",
   "dependencies": {
     "boostrap": "^2.0.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "jquery": "^3.4.0"
   },
   "devDependencies": {}
